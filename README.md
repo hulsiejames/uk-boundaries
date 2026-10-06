@@ -45,11 +45,15 @@ The **Population centroids** and **Employment centroids** presets select centroi
 
 Filters include reporting level, country covered, reference year, product, publisher, boundary detail, reporting group, format, delivery and lookup method. A UK-wide file is included when selecting any constituent nation. Pre-2010 products are opt-in support vintages, with a separate “Pre-2010 only” option.
 
+**Boundary detail** is available in both tabs, with code-first labels for BFC, BFE, BGC, BSC, BUC and the indexed BGG/BGE/BUE products. Options follow the actual indexed variants; unspecified or publisher-specific details remain explicit. BGE is deliberately left to the source specification because the historical products use differing grid descriptions. A selected detail is carried from a coverage cell into file search and retained in exports. Boundary-only controls clear when switching to another product.
+
+Coverage shows only reporting rows with at least one indexed file in the displayed vintages, including “Earlier” and “Not labelled”. Entirely empty rows are retained in a closed **Not found** section, with the selected-filter context. On mobile, reporting-level cards show only available vintage/count buttons; desktop retains the annual grid. The complete selected reporting inventory, including empty rows, remains in the coverage CSV.
+
 Exports contain the complete filtered result set:
 
 - Catalogue CSV: source provenance, referenced years, formats, download/service links and method notes. Formula-like cells are neutralised for spreadsheet use.
 - Manifest JSON: schema version, current filters, taxonomy, publishers and source records for consumption by a spatial package.
-- Coverage CSV: country, level, year, product and indexed-record count for the selected grid.
+- Coverage CSV: country, level, year, product, boundary variant, centroid weighting and indexed-record count for the selected coverage view, including “Not found” rows.
 
 GIS downloads come from the original publisher. No national polygon datasets are checked into this repository. The shipped `dist/catalogue.json` is necessary metadata for the static application; `source_records.json` is the audited national-source registry used to rebuild it.
 

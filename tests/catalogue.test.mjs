@@ -1,9 +1,49 @@
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {filterItems,countryMatches,coverageRows,coverageCell,csv,searchable} from '../dist/catalogue-core.mjs';
+import {filterItems,countryMatches,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,csv,searchable} from '../dist/catalogue-core.mjs';
 const data=JSON.parse(readFileSync(new URL('../dist/catalogue.json',import.meta.url),'utf8'));
 const find=f=>filterItems(data.items,f,data.levels,data.providers);
+test('detail options include every indexed boundary code and preserve unfamiliar codes',()=>{
+  const actual=new Set(boundaryVariants(data.items).map(x=>x.value));
+  assert.deepEqual(actual,new Set(data.items.filter(x=>x.kind==='boundary').map(x=>x.variant)));
+  for(const code of ['BFC','BFE','BGC','BSC','BUC','BGG','BGE','BUE','Unspecified'])assert.ok(actual.has(code),code);
+  assert.equal(boundaryVariants([{kind:'boundary',variant:'BXX'},{kind:'lookup',variant:'BYY'}])[0].value,'BXX');
+});
+test('boundary detail filters never leak into non-boundary products',()=>{
+  for(const variant of boundaryVariants(data.items).map(x=>x.value)){
+    const rows=find({variant,older:true});assert.ok(rows.length,variant);
+    assert.ok(rows.every(x=>x.kind==='boundary'&&x.variant===variant),variant);
+  }
+  assert.equal(find({kind:'lookup',variant:'Unspecified'}).length,0);
+  assert.equal(find({kind:'centroid',variant:'Unspecified'}).length,0);
+});
+test('filtered coverage counts and file drill-through agree for every boundary detail',()=>{
+  for(const country of ['England','Wales'])for(const {value:variant} of boundaryVariants(data.items)){
+    const rows=coverageRows(data.items,data.levels,[country],'','boundary','',variant);
+    assert.ok(rows.every(row=>row.items.every(x=>x.variant===variant)));
+    const columns=['older',...Array.from({length:data.historyEnd-2009},(_,i)=>2010+i),'Unknown'];
+    const {indexed,missing}=partitionCoverageRows(rows,columns);
+    assert.equal(indexed.length+missing.length,rows.length);
+    assert.ok(missing.every(row=>row.items.length===0));
+    // Check a real source vintage per detail and country, including legacy/unlabelled routes.
+    const row=indexed[0];if(!row)continue;
+    const year=columns.find(y=>coverageCell(row,y).length);
+    const matches=find({country,level:row.level.id,kind:'boundary',variant,year:String(year),older:year==='older'});
+    assert.deepEqual(coverageCell(row,year).map(x=>x.id).sort(),matches.map(x=>x.id).sort());
+  }
+});
+test('only all-empty reporting rows move to Not found, including Earlier and Not labelled',()=>{
+  const row=(id,items)=>({country:'England',level:{id},items});
+  const rows=[row('empty',[]),row('unknown',[{kind:'boundary',years:[],year:null}]),
+    row('earlier',[{kind:'boundary',years:[2001],year:2001}]),row('mixed-lookup',[{kind:'lookup',years:[2011,2021],year:null}]),
+    row('current',[{kind:'boundary',years:[2026],year:2026}])];
+  const result=partitionCoverageRows(rows,['older',2011,2021,2026,'Unknown']);
+  assert.deepEqual(result.missing.map(r=>r.level.id),['empty']);
+  assert.deepEqual(result.indexed.map(r=>r.level.id),['unknown','earlier','mixed-lookup','current']);
+  assert.equal(rows.length,5);assert.equal(rows[1].items.length,1);
+  assert.deepEqual(partitionCoverageRows(rows,[2010]).missing,rows);
+});
 test('Scottish/NI census shortcuts include their different statistical systems',()=>{
   for(const country of ['Scotland','Northern Ireland']){
     const rows=find({country,group:'Census',kind:'boundary'});

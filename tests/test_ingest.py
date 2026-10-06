@@ -1,9 +1,19 @@
 import json, sys, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from ingest import normalize_ons, product_kind, levels_for_title, centroid_weight, YEAR
+from ingest import normalize_ons, product_kind, levels_for_title, centroid_weight, boundary_variant, YEAR
 
 class VintageSemantics(unittest.TestCase):
+    def test_boundary_detail_preserves_explicit_source_codes(self):
+        for code in ['BFC','BFE','BGC','BSC','BUC','BGG','BGE','BUE','BSE','BNC']:
+            with self.subTest(code=code):
+                row=normalize_ons(self.item('Built Up Areas (December 2022) Boundaries GB '+code.lower()))
+                self.assertEqual(row['variant'],code)
+        self.assertEqual(boundary_variant('Boundaries full clipped'),'BFC')
+        self.assertEqual(boundary_variant('Boundaries full extent'),'BFE')
+        self.assertEqual(boundary_variant('Current boundary service'),'Unspecified')
+        self.assertEqual(boundary_variant('Boundaries (BFE2)'),'Unspecified')
+
     def item(self,title):
         return dict(id='fixture',title=title,type='Feature Service',created=1780000000000,modified=1780000000000,url='https://example.org/FeatureServer')
 
