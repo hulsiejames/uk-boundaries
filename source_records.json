@@ -1,0 +1,3685 @@
+{
+  "checked": "2026-10-06",
+  "items": [
+    {
+      "id": "nrs:754e109413e6ac140bc3",
+      "title": "Census 2011 - Workplace Zones",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "workplace"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/9958cd02-60d7-45d0-8e77-15c37265ca45",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2011/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:2cba19079d407c01aaa5",
+      "title": "Intermediate Zone Boundaries 2001",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/42dc0524-a8fb-4fdb-b838-2f63f96e5a2b",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneBdry_2001.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-01-18",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:e7e381d34b8a5af832d8",
+      "title": "Data Zone Centroids 2011",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/8f370479-5e3d-450b-9064-4a33274f1a52",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneCent_2011.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-03-18",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:9c6ce056dec7b0eb9c02",
+      "title": "Intermediate Zone Boundaries 2011",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/389787c0-697d-4824-9ca9-9ce8cb79d6f5",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneBdry_2011.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-11-22",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:cf3787ec3ac2ce633899",
+      "title": "Data Zone Centroids 2022",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/6755b5a3-5d99-4ca3-bd19-33d5454774ac",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneCent_2022.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2024-12-16",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:389ca4d6cbb3e3c2122d",
+      "title": "Intermediate Zone Centroids 2022",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/28766a39-98fe-42b2-b599-cff691002d43",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneCent_2022.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2024-12-16",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:f7d4660e29121c945ac9",
+      "title": "Data Zone Boundaries 2022",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f6656adf-b720-4612-ad5c-1d13eae94c8b",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneBdry_2022.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2024-12-16",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:95b2598958a05077136a",
+      "title": "Intermediate Zone Boundaries 2022",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/2978ed67-dade-42ec-b8e1-644e0b1f8cd8",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneBdry_2022.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2024-12-16",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:f0ba9f76026879f4d1a5",
+      "title": "Data Zone Boundaries 2011",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/7d3e8709-98fa-4d71-867c-d5c8293823f2",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneBdry_2011.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-11-24",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:740cfe90d31aff66aa93",
+      "title": "Census 2011 - Workplace Zones Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "workplace"
+      ],
+      "kind": "centroid",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/5f079440-23ba-4ec4-9229-9b243406657a",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2011/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:caaa50de8175ed13c243",
+      "title": "Data Zone Boundaries 2001",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/b7727226-f857-421d-8e9d-9151b07df68e",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneBdry_2001.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-01-18",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:45be8f0b47eeba8f395e",
+      "title": "Census 2011 - Output Areas",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/e8544752-8d8e-4be4-8fad-68e7e70a90b8",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2011/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:9fa08f195dd37d449e33",
+      "title": "Intermediate Zone Centroids 2011",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/298a25ec-926e-40ca-b74e-60576f8f6dda",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneCent_2011.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-10-05",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:fc6f31c7e35232edd645",
+      "title": "Data Zone Centroids 2001",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/245906ff-d427-4d85-a6f6-b34b74363dcd",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneCent_2001.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-10-05",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:c01f31b90006c71cb435",
+      "title": "Census 2022 – Output Areas",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/a0a643ba-c0ed-4860-93a9-5fee11ac492a",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:d8bf7e8529f61745118b",
+      "title": "Intermediate Zone Centroids 2001",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "iz-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/0b5ec34c-f73d-44ad-b121-d9c63daae81b",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_IntermediateZoneCent_2001.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/StatisticalUnits/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2021-01-18",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:d349370a3f5adef469e5",
+      "title": "Census 2001 - Output Areas",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/a895f01c-8fa4-4c32-83a6-93c5fede3d7f",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:181522a403b085a79d82",
+      "title": "Census 2001 - CAS Wards",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "ward"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/74af90a1-2871-45ef-92f1-c81c90a6bfd3",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:c4e12d3e7a894f6cd397",
+      "title": "Census 2001 - Standard Table Wards",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "ward"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/1106ed62-501b-4298-8718-d76e63e46ab1",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:3be9bbcd9ce8a7faaa62",
+      "title": "Census 2001 - Localities",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/6348dd00-4cd6-4b19-bc86-3de3e44c3254",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:e37c7721ed1f78dfd9cc",
+      "title": "Census 2022 - Island Groups",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "other"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/898b8f72-d558-4ae7-8a78-14683238d581",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:35ae0422190767d50297",
+      "title": "Census 2001 - Settlements",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/234afebe-71ea-4d3d-a2a1-b418d18666d3",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:d5ab27d60c537c43f06a",
+      "title": "Census 2022 – Localities",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/db8c4cb5-39f0-42a7-838b-17178422bc61",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:fe51c982014c32b104cb",
+      "title": "Census 2022 – Settlements",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/3d4b28c3-180d-4a21-8771-3193aa5f2e8d",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:d158aa5ad8ef5c2b0c02",
+      "title": "Census 2022 – Locality Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/9acf8405-1cf3-4670-ae66-c86d8e130eb2",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:97a439f8c502b033375f",
+      "title": "Census 2011 - Island Groups",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "other"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/ad7c7374-7a2e-4258-8a32-6fd1446e602a",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2011/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:4de7f81fbb71bf61d1aa",
+      "title": "Census 2001 - Output Area Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/9932dc08-d840-4048-8ad6-063a2facc0c4",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2001/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:2ec8135eed74cd1f94ee",
+      "title": "Census 2022 – Output Area Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/357c21cd-0831-4b7d-86c7-adc8dbd9fbd0",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:b819783bfe2d39f000cd",
+      "title": "Census 2011 - Output Area Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/9d977a73-7884-4870-ae76-afccf8e6fae8",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2011/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-11",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:8ae5fb95ba10fc25af17",
+      "title": "Census 2022 – Settlement Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/74fac518-df51-420d-bc87-21f84acb328f",
+      "downloads": [],
+      "service": "https://maps.gov.scot/server/services/NRS/Census2022/MapServer/WFSServer?request=GetCapabilities&service=WFS",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Census reference vintage; not the date of a later upload. Use the metadata for service layer names, CRS and coastal definition.",
+      "method": "",
+      "published": "",
+      "modified": "2025-02-10",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:1716cef89cd4db2a30e8",
+      "title": "2022 Census Output Area boundaries – Extent of the Realm",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/xyvbbitq/output-area-2022-eor.zip"
+        }
+      ],
+      "service": "",
+      "variant": "BFE",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:682305a85e9d8bbbf0b2",
+      "title": "2022 Census Output Area boundaries – Clipped to the coastline",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/uwdpx4hn/output-area-2022-mhw.zip"
+        }
+      ],
+      "service": "",
+      "variant": "BFC",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:dd6f36afa9ac47d129d4",
+      "title": "2022 Census Output Area boundaries – Part Removed – Extent of the Realm",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/ymuc3wtg/output-area-2022-part-removed-eor.zip"
+        }
+      ],
+      "service": "",
+      "variant": "BFE",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "Part Removed products have a different geometric treatment; check the NRS information note.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:3e409b98e81f833391cc",
+      "title": "2022 Census Output Area boundaries – Part Removed – Clipped to the coastline",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/41sd3avo/outputarea2022_partremoved_mhw.zip"
+        }
+      ],
+      "service": "",
+      "variant": "BFC",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "Part Removed products have a different geometric treatment; check the NRS information note.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:1f6c4dd4045c59af50d2",
+      "title": "2022 Census Output Area Population Weighted Centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/gm4dvdsv/output-area-2022-pwc.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:0f31505ce482746f7da5",
+      "title": "2022 Census Settlement boundaries",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/c3xbhayl/census-settlement-2022-mhw.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:21e34d7504098b38af6a",
+      "title": "2022 Census Settlement centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/lceniiel/census-settlement-centroids-2022.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:afd071f3b7f8e1694c0f",
+      "title": "2022 Census Locality boundaries",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/im2nqu55/censuslocality2022_mhw.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:d99e168ebf8eafbf2fb2",
+      "title": "2022 Census Locality centroids",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "settlement-sc"
+      ],
+      "kind": "centroid",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/5nbgwfek/census-locality-centroids-2022.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:dccfd1743b64cc2e0071",
+      "title": "2022 Census Island Groups boundaries",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "other"
+      ],
+      "kind": "boundary",
+      "years": [
+        2022
+      ],
+      "year": 2022,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nrscotland.gov.uk/media/1o4ioj5n/island-groups-2022-mhw.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:013dabe6fd48efa48f7b",
+      "title": "Census 2022 index: OA to higher geographies",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "lad",
+        "other"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022
+      ],
+      "year": null,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/utrbt5ze/census_2022_index.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:6fc0b1de1cc829a68b70",
+      "title": "OA 2022 to Scottish Parliament constituencies and regions 2026",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "scot-parliament",
+        "scot-region"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022,
+        2026
+      ],
+      "year": null,
+      "vintage": "2022 / 2026",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/oxsdygxw/oa22_spr26_spc26.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:39efc1366837a05d91dc",
+      "title": "OA 2022 to pre-operative Scottish Parliament constituencies and regions 2025",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "scot-parliament",
+        "scot-region"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022,
+        2025
+      ],
+      "year": null,
+      "vintage": "2022 / 2025",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/osujp52y/oa22_preop_spr25_spc25.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:18475206f88e3a7a88fa",
+      "title": "OA 2022 to Travel-to-work areas 2011",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "ttwa"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011,
+        2022
+      ],
+      "year": null,
+      "vintage": "2022 / 2011",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/brjf1v0c/oa22_ttwa11.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:4d284061d4d312af9292",
+      "title": "OA 2022 to LAU and ITL 2025",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "lau",
+        "itl2",
+        "itl3"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022,
+        2025
+      ],
+      "year": null,
+      "vintage": "2022 / 2025",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/qsxon3dm/oa22_lau25_itl25.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:9c88e261148653584338",
+      "title": "OA 2022 to Data Zones and Intermediate Zones 2022",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "dz-sc",
+        "iz-sc"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022
+      ],
+      "year": null,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/iz3evrqt/oa22_dz22_iz22.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:64e4a5a90426c86b994d",
+      "title": "OA 2022 to Urban / rural classification 2022",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "rural"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022
+      ],
+      "year": null,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/qs0d3mtz/oa22_ur22.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:4f81cc2fde506de4c592",
+      "title": "OA 2022 to Community councils",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "community-sc"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022
+      ],
+      "year": null,
+      "vintage": "2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/qbvnv4uq/oa22_communitycouncil.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:a8d2e4bd745482b3a5ff",
+      "title": "OA 2022 to Westminster constituencies 2024",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc",
+        "westminster"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022,
+        2024
+      ],
+      "year": null,
+      "vintage": "2022 / 2024",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/njkmhppf/oa22_ukpc24.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nrs:9fa0b2d398d4bf9df766",
+      "title": "Output Area linkage 2011 to 2022",
+      "provider": "nrs",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "oa-sc"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011,
+        2022
+      ],
+      "year": null,
+      "vintage": "2011 / 2022",
+      "source": "https://www.nrscotland.gov.uk/publications/2022-census-geography-products/",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nrscotland.gov.uk/media/jkopz5pu/census2022_oalinkage.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "Includes source information notes. Linkage and higher-area assignments are distinct from population weights.",
+      "method": "See information note",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:a262f2ca638d8c7525e6",
+      "title": "Data Zone boundaries 2021 · ESRI Shapefile ZIP archive (14 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "dz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-dz2021-esri-shapefile.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:41f5841303e800e39d9a",
+      "title": "Data Zone boundaries 2021 · GeoJSON ZIP archive (26 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "dz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "GeoJSON",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-dz2021-geojson.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "GeoJSON"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:98bde70e95d63a03f85f",
+      "title": "Data Zone boundaries 2021 · Geodatabase ZIP archive (15 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "dz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Geodatabase",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-dz2021-geodatabase.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Geodatabase"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:11f9f32f92d9ad1f1694",
+      "title": "Super Data Zone boundaries 2021 · ESRI Shapefile ZIP archive (11 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sdz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/super-data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-sdz2021-esri-shapefile.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:d8ebb0ad82ec438d098b",
+      "title": "Super Data Zone boundaries 2021 · GeoJSON ZIP archive (20 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sdz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/super-data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "GeoJSON",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-sdz2021-geojson.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "GeoJSON"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:60e305a2658a331f685a",
+      "title": "Super Data Zone boundaries 2021 · Geodatabase ZIP archive (15 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sdz-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2021
+      ],
+      "year": 2021,
+      "vintage": "2021",
+      "source": "https://www.nisra.gov.uk/publications/super-data-zone-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Geodatabase",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/geography-sdz2021-geodatabase.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Geodatabase"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:93f1794a851efc517e3d",
+      "title": "Small Area boundaries 2011 · ESRI Shapefile format ZIP archive (24 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/small-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/SA2011_Esri_Shapefile_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:41aaf7b365aa9dcb78e9",
+      "title": "Small Area boundaries 2011 · Mapinfo format ZIP archive (23 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/small-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "MapInfo",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/SA2011_MapInfo_Tab_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "MapInfo"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:acbf358a6330d84da626",
+      "title": "Super Output Area boundaries 2011 · ESRI Shapefile format ZIP archive (17 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "soa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/super-output-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/SOA2011_Esri_Shapefile_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:3095098c34ca3291950e",
+      "title": "Super Output Area boundaries 2011 · Mapinfo format ZIP archive (12 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "soa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/super-output-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "MapInfo",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/SOA2011_MapInfo_Tab_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "MapInfo"
+      ],
+      "notes": "NI Small Areas/SOAs and Data Zones/Super Data Zones are separate census systems.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:9fedb20fa42adcc4db69",
+      "title": "Output Area boundaries 2001 · ESRI Shapefile format ZIP archive (23 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "oa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://www.nisra.gov.uk/publications/output-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/OA_ni%20ESRI.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:5807ca4f599d6d05446c",
+      "title": "Output Area boundaries 2001 · Mapinfo format ZIP archive (24 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "oa-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2001
+      ],
+      "year": 2001,
+      "vintage": "2001",
+      "source": "https://www.nisra.gov.uk/publications/output-area-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "MapInfo",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/OA_ni%20Mapinfo.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "MapInfo"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:07d4a9c152ab700b0b35",
+      "title": "(1) Area Classification for former Electoral Ward (1992)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        1992
+      ],
+      "year": null,
+      "vintage": "1992",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-area-classification-administrative-geographies-ward1992-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:e089005bc5a853f8c1da",
+      "title": "(2) Small Area (2011) and Output Area (2001) to statistical geographies",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2001,
+        2011
+      ],
+      "year": null,
+      "vintage": "2011 / 2001",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-and-oa2001-to-statistical-geographies-2013-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:5b954b280dd75f7b195c",
+      "title": "(3) Small Area (2011), Super Output Area (2011) and Output Area (2001) to statistical and administrative geographies",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2001,
+        2011
+      ],
+      "year": null,
+      "vintage": "2011 / 2011 / 2001",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-soa2011-oa2001-to-statistical-and-administrative-geographies-2016-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:9c911f97b98971dae972",
+      "title": "(4) Small Area (2011), Super Output Area (2011) and Output Area (2001) to current Local Government District (2014)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2001,
+        2011,
+        2014
+      ],
+      "year": null,
+      "vintage": "2011 / 2011 / 2001 / 2014",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-soa2011-and-oa2001-to-lgd2014-statistical-geographies-2013-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:4df824d11a3b19e55335",
+      "title": "(5) Small Area (2011) to current District Electoral Area (2014) and Local Government District (2014)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011,
+        2014
+      ],
+      "year": null,
+      "vintage": "2011 / 2014 / 2014",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-to-dea2014-to-lgd2014-statistical-geographies-2013-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:dfe9664437a369841d7f",
+      "title": "(6) Small Area (2011) to Neighbourhood Renewal Area",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011
+      ],
+      "year": null,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-to-nra-statistical-geographies-2011-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:f518bcc2aeb58ebad0c3",
+      "title": "(7) Former Electoral Ward (1992) to administrative geographies",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        1992
+      ],
+      "year": null,
+      "vintage": "1992",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-ward1992-to-administrative-geographies-2010-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:e9a56147662edaa8c451",
+      "title": "(8) Current Electoral Ward (2014) to current District Electoral Area (2014) and Local Government District (2014)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2014
+      ],
+      "year": null,
+      "vintage": "2014 / 2014 / 2014",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-ward2014-to-dea2014-to-lgd2014-administrative-geographies-2016-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:b695c05df525bd6c6995",
+      "title": "(9) Urban/rural classification for Settlements (2015)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2015
+      ],
+      "year": null,
+      "vintage": "2015",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-urban-rural-status-settlement2015-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:7bbf60e1b215b7383289",
+      "title": "(10) Urban/rural classification (2005) for former Electoral Ward (1992)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        1992,
+        2005
+      ],
+      "year": null,
+      "vintage": "2005 / 1992",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-urban-rural-status-2005-administrative-geographies-ward1992-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:8695743a91bd64b1068b",
+      "title": "(11) Urban/rural classification (2005) for Small Area (2011), Super Output Area (2011) and Output Area (2001)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        2001,
+        2005,
+        2011
+      ],
+      "year": null,
+      "vintage": "2005 / 2011 / 2011 / 2001",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-urban-rural-status-2005-sa2011-soa2011-oa2001-statistical-geographies-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:df0de842a47f6368edc5",
+      "title": "(12) Urban/rural classification (2015) for Small Area (2011), Super Output Area (2011) and former Electoral Ward (1992)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [
+        1992,
+        2011,
+        2015
+      ],
+      "year": null,
+      "vintage": "2015 / 2011 / 2011 / 1992",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "ODS",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-urban-rural-status-2015-sa2011-soa2011-ward1992-v1.ods"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "ODS"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:8e15ab630a482a045271",
+      "title": "(13) Area Size - administrative geographies",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-area-size-administrative-geographies-v1.xlsx"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:cf136b14bf969a07001d",
+      "title": "(14) Area size - statistical geographies",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad"
+      ],
+      "kind": "lookup",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-area-size-statistical-geographies-v1.xlsx"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:50e205433f7018ec56cb",
+      "title": "(15) Small Area (2011) and Super Output Area (2011) to future Assembly Area / Parliamentary Constituency (2024)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "soa-ni",
+        "oa-ni",
+        "ward",
+        "dea-ni",
+        "lad",
+        "ni-assembly",
+        "westminster"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011,
+        2024
+      ],
+      "year": null,
+      "vintage": "2011 / 2011 / 2024",
+      "source": "https://www.nisra.gov.uk/publications/geography-lookup-tables",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.nisra.gov.uk/files/nisra/documents/2025-04/geography-lookup-sa2011-and-soa2011-to-aa2024-v1.xlsx"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:4f96626b75618ae831fa",
+      "title": "Travel-to-work areas · Loookup table- SOA to TTWA 2011 Comma-separated values (40 KB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "ttwa"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011
+      ],
+      "year": null,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-travel-work-areas",
+      "downloads": [
+        {
+          "format": "CSV",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/LKP_TTWA11.csv"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "CSV"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:0b7712f782215d4d6984",
+      "title": "Travel-to-work areas · ESRI-TTWA2011 ZIP archive (4 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "ttwa"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-travel-work-areas",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/TTWA2011_SHP.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:fb5f3aee2f9353f8bec2",
+      "title": "Travel-to-work areas · ESRI-TTWA2007 ZIP archive (2 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "ttwa"
+      ],
+      "kind": "boundary",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-travel-work-areas",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/ESRI-TWA.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:dbcc10edbd18317b6aae",
+      "title": "Travel-to-work areas · Mapinfo-TTWA2007 ZIP archive (3 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "ttwa"
+      ],
+      "kind": "boundary",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-travel-work-areas",
+      "downloads": [
+        {
+          "format": "MapInfo",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/Mapinfo-TWA.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "MapInfo"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:a58f901ccdde9f24f2da",
+      "title": "Workplace Zone boundaries 2011 · ESRI Shapefile format ( ZIP archive (16 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "workplace"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-workplace-zones-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/WZ2011_NI_ESRI_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:9ae27fcad20bb357c60b",
+      "title": "Workplace Zone boundaries 2011 · JSON format ZIP archive (22 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "workplace"
+      ],
+      "kind": "boundary",
+      "years": [
+        2011
+      ],
+      "year": 2011,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-workplace-zones-boundaries-gis-format",
+      "downloads": [
+        {
+          "format": "GeoJSON",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/WZ2011_NI_JSON_0.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "GeoJSON"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:0ae06c16b1ce76e1f6d2",
+      "title": "Small Area to Workplace Zone lookup 2011 · Look-up table: Small Area to Workplace Zone Microsoft Excel (526 KB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "sa-ni",
+        "workplace"
+      ],
+      "kind": "lookup",
+      "years": [
+        2011
+      ],
+      "year": null,
+      "vintage": "2011",
+      "source": "https://www.nisra.gov.uk/publications/northern-ireland-workplace-zones-wz-2011",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/WPZ_SA_lookup_0.xls"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:e9361b7b596e25e85a11",
+      "title": "Settlement boundaries 2015 · Settlement 2015 Lookup Table Microsoft Excel (4 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "settlement-ni",
+        "rural"
+      ],
+      "kind": "lookup",
+      "years": [
+        2015
+      ],
+      "year": null,
+      "vintage": "2015",
+      "source": "https://www.nisra.gov.uk/publications/urban-rural-geography-documents-2015",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/Settlement15-lookup.xls"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "nisra:e9a640bb5bcbd83fa7c9",
+      "title": "Settlement boundaries 2015 · Settlement Development Limits 2015 - ESRI format ZIP archive (2 MB)",
+      "provider": "nisra",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "settlement-ni",
+        "rural"
+      ],
+      "kind": "boundary",
+      "years": [
+        2015
+      ],
+      "year": 2015,
+      "vintage": "2015",
+      "source": "https://www.nisra.gov.uk/publications/urban-rural-geography-documents-2015",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://www.nisra.gov.uk/files/nisra/publications/SDL15-ESRI_format.zip"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Shapefile"
+      ],
+      "notes": "",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:3c237510f1d7a7da88d3",
+      "title": "Data Zone matching 2001 to 2011: area and population",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc"
+      ],
+      "kind": "lookup",
+      "years": [
+        2001,
+        2011
+      ],
+      "year": null,
+      "vintage": "2001 / 2011",
+      "source": "https://www.gov.scot/publications/small-area-statistics-reference-materials/",
+      "downloads": [
+        {
+          "format": "Excel",
+          "url": "https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2020/01/small-area-statistics-reference-materials/documents/data-zone-matching-file-area-and-population-matching-between-2001-and-2011-data-zones/data-zone-matching-file-area-and-population-matching-between-2001-and-2011-data-zones/govscot%3Adocument/Data%2BZone%2BMatching%2BFile%2B%2528Area%2Band%2BPop.%2Bbased%2B2001%2B-%2B2011%2529.xlsx"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source file",
+      "formats": [
+        "Excel"
+      ],
+      "notes": "Use the accompanying quick guide and workbook definitions for weighting.",
+      "method": "Area and population matching",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "osni:2cc3bc0e9de3da50c069",
+      "title": "NISRA Boundaries - HSCT",
+      "provider": "osni",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "hsct-ni"
+      ],
+      "kind": "boundary",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://www.arcgis.com/home/item.html?id=843d6ec6b2b248279a4647262888f1a8",
+      "downloads": [],
+      "service": "https://utility.arcgis.com/usrsvcs/servers/843d6ec6b2b248279a4647262888f1a8/rest/services/A_NISRABoundaries/NISRABoundaries/MapServer/11",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "ArcGIS service"
+      ],
+      "notes": "The year is the publisher scheme label, not its legal commencement date. Publisher service access may vary.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "osni:2db2765c2777b37063c5",
+      "title": "OSNI Administrative Boundaries - District Electoral Areas 2012",
+      "provider": "osni",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "dea-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        2012
+      ],
+      "year": 2012,
+      "vintage": "2012 scheme",
+      "source": "https://www.arcgis.com/home/item.html?id=f7eccdb9c4aa4ab5a2ec01a4def7b389",
+      "downloads": [],
+      "service": "https://utility.arcgis.com/usrsvcs/servers/f7eccdb9c4aa4ab5a2ec01a4def7b389/rest/services/Boundaries/OSNIAdministrativeBoundaries/MapServer/5",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "ArcGIS service"
+      ],
+      "notes": "The year is the publisher scheme label, not its legal commencement date. Publisher service access may vary.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "osni:707b16d93c6705116be5",
+      "title": "OSNI Administrative Boundaries - Legacy - District Electoral Areas 1993",
+      "provider": "osni",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "dea-ni"
+      ],
+      "kind": "boundary",
+      "years": [
+        1993
+      ],
+      "year": 1993,
+      "vintage": "1993 scheme",
+      "source": "https://www.arcgis.com/home/item.html?id=15de51066e9c43a5ac41cdaf45e0004c",
+      "downloads": [],
+      "service": "https://utility.arcgis.com/usrsvcs/servers/15de51066e9c43a5ac41cdaf45e0004c/rest/services/Boundaries/OSNIAdministrativeBoundaries/MapServer/10",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "ArcGIS service"
+      ],
+      "notes": "The year is the publisher scheme label, not its legal commencement date. Publisher service access may vary.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "osni:5328758e85fe22623e24",
+      "title": "OSNI Administrative Boundaries - Local Government Districts 1993",
+      "provider": "osni",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "lad"
+      ],
+      "kind": "boundary",
+      "years": [
+        1993
+      ],
+      "year": 1993,
+      "vintage": "1993 scheme",
+      "source": "https://www.arcgis.com/home/item.html?id=bd9797dd321c485792d142216a6d7706",
+      "downloads": [],
+      "service": "https://utility.arcgis.com/usrsvcs/servers/bd9797dd321c485792d142216a6d7706/rest/services/Boundaries/OSNIAdministrativeBoundaries/MapServer/9",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "ArcGIS service"
+      ],
+      "notes": "The year is the publisher scheme label, not its legal commencement date. Publisher service access may vary.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "osni:9d28d7ab82dec8aa0b68",
+      "title": "OSNI Administrative Boundaries - Local Government Districts 2012",
+      "provider": "osni",
+      "countries": [
+        "Northern Ireland"
+      ],
+      "levels": [
+        "lad"
+      ],
+      "kind": "boundary",
+      "years": [
+        2012
+      ],
+      "year": 2012,
+      "vintage": "2012 scheme",
+      "source": "https://www.arcgis.com/home/item.html?id=e702f30b15764d559f16cc8dd3522751",
+      "downloads": [],
+      "service": "https://utility.arcgis.com/usrsvcs/servers/e702f30b15764d559f16cc8dd3522751/rest/services/Boundaries/OSNIAdministrativeBoundaries/MapServer/3",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "ArcGIS service"
+      ],
+      "notes": "The year is the publisher scheme label, not its legal commencement date. Publisher service access may vary.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "wales:62905935481746040fe5",
+      "title": "Communities (Wales)",
+      "provider": "wales",
+      "countries": [
+        "Wales"
+      ],
+      "levels": [
+        "parish"
+      ],
+      "kind": "boundary",
+      "years": [],
+      "year": null,
+      "vintage": "Current; vintage not labelled",
+      "source": "https://datamap.gov.wales/layers/geonode:communites_wales",
+      "downloads": [],
+      "service": "https://datamap.gov.wales/capabilities/layer/8719/?ows_service=wfs",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Download formats and coastal definition are provided by DataMapWales. A current layer does not certify all earlier years.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "wales:9172e84830dec9f7a6d0",
+      "title": "Senedd constituency boundaries 2026",
+      "provider": "wales",
+      "countries": [
+        "Wales"
+      ],
+      "levels": [
+        "senedd"
+      ],
+      "kind": "boundary",
+      "years": [
+        2026
+      ],
+      "year": 2026,
+      "vintage": "2026",
+      "source": "https://datamap.gov.wales/layers/geonode:senedd_final_2026",
+      "downloads": [],
+      "service": "https://datamap.gov.wales/capabilities/layer/7527/?ows_service=wfs",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Download formats and coastal definition are provided by DataMapWales. A current layer does not certify all earlier years.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "wales:1c2e7da48d9a715ec2a5",
+      "title": "Local Health Boards before April 2019",
+      "provider": "wales",
+      "countries": [
+        "Wales"
+      ],
+      "levels": [
+        "lhb"
+      ],
+      "kind": "boundary",
+      "years": [],
+      "year": null,
+      "vintage": "Before April 2019",
+      "source": "https://datamap.gov.wales/layers/geonode:lhb_high_water_mark_pre_apr_2019",
+      "downloads": [],
+      "service": "https://datamap.gov.wales/capabilities/layer/1054/?ows_service=wfs",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Download formats and coastal definition are provided by DataMapWales. A current layer does not certify all earlier years.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "wales:4b4d7807bc425bc52b75",
+      "title": "Local Health Boards from April 2019",
+      "provider": "wales",
+      "countries": [
+        "Wales"
+      ],
+      "levels": [
+        "lhb"
+      ],
+      "kind": "boundary",
+      "years": [
+        2019
+      ],
+      "year": 2019,
+      "vintage": "From April 2019",
+      "source": "https://datamap.gov.wales/layers/geonode:lhb_high_water_mark_post_apr_2019",
+      "downloads": [],
+      "service": "https://datamap.gov.wales/capabilities/layer/1053/?ows_service=wfs",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "WFS service"
+      ],
+      "notes": "Download formats and coastal definition are provided by DataMapWales. A current layer does not certify all earlier years.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "os:acd7e5ae3f0c8eefe608",
+      "title": "Ordnance Survey Boundary-Line: GB administrative and electoral downloads",
+      "provider": "os",
+      "countries": [
+        "England",
+        "Wales",
+        "Scotland"
+      ],
+      "levels": [
+        "lad",
+        "upper",
+        "metro",
+        "ward",
+        "parish",
+        "westminster",
+        "scot-parliament",
+        "scot-region"
+      ],
+      "kind": "reference",
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "source": "https://osdatahub.os.uk/downloads/open/BoundaryLine",
+      "downloads": [],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source directory",
+      "formats": [
+        "GeoPackage",
+        "Shapefile",
+        "Publisher downloads"
+      ],
+      "notes": "Great Britain coverage. Current Shapefile, GeoPackage and other publisher formats; historical releases have not been indexed here.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled or current source",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:845700454730d39a638e",
+      "title": "Scottish Data Zone 2022 to higher geography lookup",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "dz-sc",
+        "iz-sc",
+        "lad",
+        "other"
+      ],
+      "kind": "lookup",
+      "years": [
+        2022
+      ],
+      "year": null,
+      "vintage": "2022",
+      "source": "https://statistics.gov.scot/data/data-zone-lookup-2022",
+      "downloads": [],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Source directory",
+      "formats": [
+        "Publisher downloads"
+      ],
+      "notes": "Publisher dataset export; higher-area assignment is not a census-to-census overlap matrix.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher-labelled geography vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:5cda6982d413215a6dd5",
+      "title": "NHS Health Boards - Scotland",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "hb-sc"
+      ],
+      "kind": "boundary",
+      "years": [
+        2019
+      ],
+      "year": 2019,
+      "vintage": "2019 file edition",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f12c3826-4b4b-40e6-bf4f-77b9ed01dc14",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_NHS_HealthBoards_2019.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/HealthSocialCare/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "The 2019 label comes from the publisher file edition. Check the source for legal definitions and subsequent amendments.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher download filename (2019); not legal commencement",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "scotgov:22c36e63da341cf44493",
+      "title": "Health Integration Authorities",
+      "provider": "scotgov",
+      "countries": [
+        "Scotland"
+      ],
+      "levels": [
+        "other"
+      ],
+      "kind": "boundary",
+      "years": [
+        2019
+      ],
+      "year": 2019,
+      "vintage": "2019 file edition",
+      "source": "https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/ac5e870f-8fc2-4c21-8b9c-3bd2311a583f",
+      "downloads": [
+        {
+          "format": "Shapefile",
+          "url": "https://maps.gov.scot/ATOM/shapefiles/SG_HealthIntegrationAuthority_2019.zip"
+        }
+      ],
+      "service": "https://maps.gov.scot/server/services/ScotGov/HealthSocialCare/MapServer/WFSServer?",
+      "variant": "Unspecified",
+      "type": "Official service",
+      "formats": [
+        "Shapefile",
+        "WFS service"
+      ],
+      "notes": "The 2019 label comes from the publisher file edition. Check the source for legal definitions and subsequent amendments.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Publisher download filename (2019); not legal commencement",
+      "checked": "2026-10-06"
+    }
+  ]
+}
