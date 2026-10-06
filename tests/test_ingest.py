@@ -1,7 +1,7 @@
 import json, sys, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from ingest import normalize_ons, product_kind, levels_for_title, YEAR
+from ingest import normalize_ons, product_kind, levels_for_title, centroid_weight, YEAR
 
 class VintageSemantics(unittest.TestCase):
     def item(self,title):
@@ -35,6 +35,12 @@ class VintageSemantics(unittest.TestCase):
         self.assertIsNone(normalize_ons(self.item(f'Output Areas ({YEAR+1}) Boundaries EW')))
         self.assertEqual(product_kind('National Statistics Postcode Lookup (2026) User Guide'),'reference')
 
+    def test_centroid_weighting_is_not_inferred_from_the_geography_name(self):
+        self.assertEqual(centroid_weight('Workplace Zone Centroids','centroid'),'not-specified')
+        self.assertEqual(centroid_weight('OA Population-Weighted Centroids','centroid'),'population')
+        self.assertEqual(centroid_weight('LSOA Address Weighted Centroids','centroid'),'address')
+        self.assertEqual(centroid_weight('Population Weighted Centroids Guidance','reference'),'')
+
 class CatalogueIntegrity(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -62,5 +68,23 @@ class CatalogueIntegrity(unittest.TestCase):
     def test_unlabelled_welsh_community_layer_is_not_backfilled(self):
         row=next(x for x in self.data['items'] if x['provider']=='wales' and x['title']=='Communities (Wales)')
         self.assertEqual(row['years'],[]);self.assertIsNone(row['year'])
+
+    def test_mayoral_family_and_cca_membership_use_audited_snapshots(self):
+        rows=[x for x in self.data['items'] if x['kind']=='boundary' and 'strategic' in x['levels']]
+        cca=next(x for x in rows if x['vintage']=='December 2025' and 'cca' in x['levels'])
+        self.assertTrue(any(a['code']=='E47000013' and a['name']=='East Midlands' for a in cca['areas']))
+        self.assertFalse(any('cca' in x['levels'] for x in rows if x['year']==2023))
+        gla=next(x for x in rows if 'gla' in x['levels'])
+        self.assertEqual(gla['years'],[])
+        orders=[x for x in self.data['items'] if x['provider']=='legislation']
+        self.assertEqual(len(orders),4)
+        self.assertTrue(all(x['kind']=='reference' for x in orders))
+
+    def test_employment_centroid_has_documented_workforce_basis(self):
+        row=next(x for x in self.data['items'] if x['id']=='ons:315bb1094745426c8c63651825322183')
+        self.assertEqual(row['centroidWeight'],'employment')
+        self.assertEqual(row['centroidWeightYear'],2011)
+        self.assertIn('Census 2011 workers',row['centroidWeightBasis'])
+        self.assertTrue(row['centroidMethodology'].endswith('/data'))
 
 if __name__=='__main__': unittest.main()

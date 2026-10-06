@@ -1,0 +1,577 @@
+{
+  "checked": "2026-10-06",
+  "authoritySnapshots": [
+    {
+      "vintage": "December 2018",
+      "source": "https://geoportal.statistics.gov.uk/datasets/819e35095c4a44caa6986431d8263a4d/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2018_FEB_EN_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=cauth18cd%2Ccauth18nm&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "Sheffield City Region"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2019",
+      "source": "https://geoportal.statistics.gov.uk/datasets/c998d27cb0ce492c9c7d74389f79cfaa/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2019_FEB_EN_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=cauth19cd%2Ccauth19nm&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "Sheffield City Region"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2020",
+      "source": "https://geoportal.statistics.gov.uk/datasets/a6450b7e1f534267b73a2c635ffda873/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2020_EN_BFE_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH20CD%2CCAUTH20NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "Sheffield City Region"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2021",
+      "source": "https://geoportal.statistics.gov.uk/datasets/82f934f9b06f4aa2b48046ba0a631c64/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2021_EN_BFE_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH21CD%2CCAUTH21NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2022",
+      "source": "https://geoportal.statistics.gov.uk/datasets/f663be6f48fe44d3b8cefdef121fe9a6/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2022_EN_BFE/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH22CD%2CCAUTH22NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2023",
+      "source": "https://geoportal.statistics.gov.uk/datasets/c46da8102f5441018f224ae6e9845c4e/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2023_Boundaries_EN_BFE/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH23CD%2CCAUTH23NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000010",
+          "name": "North East"
+        },
+        {
+          "code": "E47000011",
+          "name": "North of Tyne"
+        }
+      ]
+    },
+    {
+      "vintage": "December 2025",
+      "source": "https://geoportal.statistics.gov.uk/datasets/969a505fb7a448bda512745446b4ab23/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2025_Boundaries_EN_BFE/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH25CD%2CCAUTH25NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000012",
+          "name": "York and North Yorkshire"
+        },
+        {
+          "code": "E47000013",
+          "name": "East Midlands"
+        },
+        {
+          "code": "E47000014",
+          "name": "North East"
+        },
+        {
+          "code": "E47000015",
+          "name": "Devon and Torbay"
+        },
+        {
+          "code": "E47000016",
+          "name": "Hull and East Yorkshire"
+        },
+        {
+          "code": "E47000017",
+          "name": "Greater Lincolnshire"
+        },
+        {
+          "code": "E47000018",
+          "name": "Lancashire"
+        }
+      ]
+    },
+    {
+      "vintage": "June 2016",
+      "source": "https://geoportal.statistics.gov.uk/datasets/459aeff239454798a3fc0875210c0b4e/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_June_2016_FEB_in_England_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=cauth16cd%2Ccauth16nm&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "Sheffield City Region"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000005",
+          "name": "North East"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        }
+      ]
+    },
+    {
+      "vintage": "March 2017",
+      "source": "https://geoportal.statistics.gov.uk/datasets/0f3b038f63514e248d9510a3288b4616/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_March_2017_FEB_in_England_2022/FeatureServer/0/query?f=json&where=1%3D1&outFields=cauth17cd%2Ccauth17nm&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "Sheffield City Region"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000005",
+          "name": "North East"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        }
+      ]
+    },
+    {
+      "vintage": "May 2024",
+      "source": "https://geoportal.statistics.gov.uk/datasets/0157497d8c8441efa9169a805f90dfe5/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_May_2023_Boundaries_EN_BFE/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH24CD%2CCAUTH24NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000012",
+          "name": "York and North Yorkshire"
+        },
+        {
+          "code": "E47000013",
+          "name": "East Midlands"
+        },
+        {
+          "code": "E47000014",
+          "name": "North East"
+        }
+      ]
+    },
+    {
+      "vintage": "May 2025",
+      "source": "https://geoportal.statistics.gov.uk/datasets/5f18aa29eaea4493bc8297ed46e544af/about",
+      "query": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/CAUTH_MAY_2025_EN_BFE/FeatureServer/0/query?f=json&where=1%3D1&outFields=CAUTH25CD%2CCAUTH25NM&returnGeometry=false&resultRecordCount=100",
+      "checked": "2026-10-06",
+      "areas": [
+        {
+          "code": "E47000001",
+          "name": "Greater Manchester"
+        },
+        {
+          "code": "E47000002",
+          "name": "South Yorkshire"
+        },
+        {
+          "code": "E47000003",
+          "name": "West Yorkshire"
+        },
+        {
+          "code": "E47000004",
+          "name": "Liverpool City Region"
+        },
+        {
+          "code": "E47000006",
+          "name": "Tees Valley"
+        },
+        {
+          "code": "E47000007",
+          "name": "West Midlands"
+        },
+        {
+          "code": "E47000008",
+          "name": "Cambridgeshire and Peterborough"
+        },
+        {
+          "code": "E47000009",
+          "name": "West of England"
+        },
+        {
+          "code": "E47000012",
+          "name": "York and North Yorkshire"
+        },
+        {
+          "code": "E47000013",
+          "name": "East Midlands"
+        },
+        {
+          "code": "E47000014",
+          "name": "North East"
+        },
+        {
+          "code": "E47000015",
+          "name": "Devon and Torbay"
+        },
+        {
+          "code": "E47000016",
+          "name": "Hull and East Yorkshire"
+        },
+        {
+          "code": "E47000017",
+          "name": "Greater Lincolnshire"
+        },
+        {
+          "code": "E47000018",
+          "name": "Lancashire"
+        }
+      ]
+    }
+  ],
+  "ccaCodes": [
+    "E47000013",
+    "E47000015",
+    "E47000017",
+    "E47000018"
+  ],
+  "ccaClassificationSource": "https://www.gov.uk/government/publications/annual-report-on-english-devolution-2024-to-2025/secretary-of-states-annual-report-on-english-devolution-2024-25",
+  "records": {
+    "ons:315bb1094745426c8c63651825322183": {
+      "centroidWeight": "employment",
+      "centroidWeightBasis": "Workplace population: weighted by the number of Census 2011 workers, confirmed by ONS methodology. Not BRES job counts.",
+      "centroidMethodology": "https://www.arcgis.com/sharing/rest/content/items/08efe60ec0934f6fbb49b9fc5537ae33/data",
+      "centroidWeightYear": 2011,
+      "centroidAlgorithm": "Median Center algorithm; adjusted to at least two metres inside the Workplace Zone boundary."
+    }
+  }
+}
