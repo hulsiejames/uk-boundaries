@@ -24,7 +24,7 @@ node --check dist/app.js
 
 ## Coverage
 
-The checked 6 October 2026 snapshot contains **3,071 source records**, from a scan of **3,291 ONS items** plus **100 curated national-source records**, organised into **61 reporting levels** and seven publisher routes. Counts describe source items and file variants, not geographic areas or independent boundary changes.
+The checked 6 October 2026 snapshot contains **3,077 source records**, from a scan of **3,291 ONS items** plus **106 curated source records**, organised into **63 reporting levels** and nine publisher routes. Counts describe source items and file variants, not geographic areas or independent boundary changes.
 
 - England and Wales: OA, LSOA and MSOA reference vintages 2001, 2011 and 2021.
 - Scotland: OA, Data Zones and Intermediate Zones for 2001, 2011 and 2022; centroids, census linkage and higher-area lookups.
@@ -38,6 +38,10 @@ Not every listed reporting level has an indexed boundary product in every countr
 ## Find files
 
 Search matches titles, geography aliases, country names/abbreviations, reference vintages and formats. It never changes selected filters. OA and MSOA acronym searches stay distinct. Individual place names or GSS codes inside polygons are not indexed.
+
+The exception is combined-authority discovery: names and codes were audited against 11 ONS snapshots from June 2016 to December 2025, and those named areas are searchable. The **Mayoral authorities** preset groups CA, CCA and GLA files; it is a discovery category, not a claim that every included authority had an elected mayor at that vintage. CCA features are identified inside shared CA bundles from audited codes. Greater London has its own official, unlabelled current boundary service. Four 2026 establishment instruments are indexed as reference documents, while their missing dated GIS polygons remain explicit.
+
+The **Population centroids** and **Employment centroids** presets select centroid products and their weighting. The centroid filter also supports address, geometric and unspecified methods, and it is available in the coverage grid. Employment/workplace weighting is confirmed for the ONS 2011 England/Wales Workplace Zone product by the linked methodology: it weights Census workers using a median-centre algorithm, despite the publisher's population-weighted title. It is not BRES job weighting. Other source methods remain unspecified unless documented; no centroid or weighting is calculated here. There is no promise of a weighted centroid at every level/year.
 
 Filters include reporting level, country covered, reference year, product, publisher, boundary detail, reporting group, format, delivery and lookup method. A UK-wide file is included when selecting any constituent nation. Pre-2010 products are opt-in support vintages, with a separate “Pre-2010 only” option.
 
@@ -62,6 +66,8 @@ The normal refresh paginates supported item types in the official ONS ArcGIS org
 The curated registry is deliberately manual: its records were explored and checked against national publisher pages and Scottish ISO/CSW metadata. Refreshing ONS does not automatically rediscover changed Scottish, Welsh, NISRA or OSNI links. Revisit those sources, amend `source_records.json`, and update its `checked` date. `--verify-sources` checks landing-page responses without downloading GIS files; it does not prove every file or service is available. Individual curated records retain their own check date.
 
 `catalogue_config.py` owns the taxonomy, aliases and publisher routes. `ingest.py` owns normalisation. `dist/catalogue-core.mjs` owns filtering, country matching, coverage cells and CSV escaping, shared by the browser and regression checks.
+
+`metadata_overrides.json` retains the manually audited authority-name snapshots, CCA code classification source and the workplace-centroid methodology override. Refreshing the ONS catalogue does not refresh these audits: recheck the matching source vintage before adding or changing an override. CSV/JSON exports retain centroid weighting, weighting basis/year, algorithm/methodology and audited area names alongside the existing source metadata.
 
 See [docs/source-audit.md](docs/source-audit.md) for the explored sources, date semantics and remaining gaps.
 

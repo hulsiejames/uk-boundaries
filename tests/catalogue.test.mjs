@@ -37,3 +37,28 @@ test('UK-wide files are available when selecting individual nations; census base
   assert.equal(find({level:'dz-sc',year:'2001',kind:'boundary'}).length,0);
   assert.ok(find({level:'dz-sc',year:'2001',kind:'boundary',older:true}).length);
 });
+
+test('mayoral aliases and actual authority names/codes find the correct shared vintages',()=>{
+  const mayoral=find({query:'mayoral authorities',country:'England',kind:'boundary'});
+  assert.ok(mayoral.some(x=>x.levels.includes('gla')));
+  assert.ok(mayoral.some(x=>x.levels.includes('cca')));
+  const west=find({query:'West Yorkshire',country:'England',level:'strategic',kind:'boundary',year:'2025'});
+  assert.ok(west.length);assert.ok(west.every(x=>x.areas.some(a=>a.name==='West Yorkshire')));
+  assert.ok(find({query:'E47000013',kind:'boundary',level:'cca',year:'2025'}).length);
+  assert.equal(find({query:'East Midlands',kind:'boundary',level:'strategic',year:'2023'}).length,0);
+});
+
+test('population and employment filters are disjoint, with reference files excluded',()=>{
+  const population=find({country:'England',centroidWeight:'population'}),employment=find({country:'England',centroidWeight:'employment'});
+  assert.ok(population.some(x=>x.levels.includes('msoa')));assert.ok(employment.some(x=>x.levels.includes('workplace')));
+  assert.ok(population.every(x=>x.kind==='centroid'));assert.ok(employment.every(x=>x.kind==='centroid'));
+  assert.ok(population.every(x=>!employment.some(e=>e.id===x.id)));
+  assert.equal(find({country:'England',level:'lad',centroidWeight:'employment'}).length,0);
+  assert.ok(coverageRows(data.items,data.levels,['England'],'Core','centroid','employment').some(row=>row.level.id==='workplace'&&coverageCell(row,2011).length));
+});
+
+test('weighted centroid grid cells and exports retain the same filtering semantics',()=>{
+  for(const weight of ['population','employment','address','geometric','not-specified'])for(const row of coverageRows(data.items,data.levels,['England','Wales','Scotland','Northern Ireland'],'','centroid',weight))for(const year of ['older',2011,2021,2022,'Unknown']){
+    assert.deepEqual(coverageCell(row,year).map(x=>x.id).sort(),find({country:row.country,level:row.level.id,kind:'centroid',centroidWeight:weight,year:String(year),older:year==='older'}).map(x=>x.id).sort());
+  }
+});

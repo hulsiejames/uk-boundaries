@@ -66,6 +66,13 @@ def boundary_variant(title):
         if text in title.lower(): return value
     return 'Unspecified'
 
+def centroid_weight(title, kind):
+    if kind != 'centroid': return ''
+    t = title.lower().replace('-', ' ')
+    for pattern, weight in [('employment weighted','employment'),('workplace weighted','employment'),('population weighted','population'),('address weighted','address'),('geometric','geometric')]:
+        if pattern in t: return weight
+    return 'not-specified'
+
 def normalize_ons(item):
     title = item['title'].strip(); kind = product_kind(title)
     if not kind: return None
@@ -85,11 +92,15 @@ def normalize_ons(item):
     fmt = {'Feature Service':'ArcGIS service','Shapefile':'Shapefile','CSV Collection':'CSV','Microsoft Excel':'Excel','CSV':'CSV','GeoJson':'GeoJSON'}[item['type']]
     downloads = [] if item['type'] == 'Feature Service' else [dict(format=fmt, url=f'https://www.arcgis.com/sharing/rest/content/items/{item["id"]}/data')]
     stamp = lambda value: datetime.fromtimestamp(value/1000, timezone.utc).date().isoformat()
-    return dict(id='ons:'+item['id'],title=title,levels=ids,kind=kind,vintage=vintage,year=year,years=years,
+    row = dict(id='ons:'+item['id'],title=title,levels=ids,kind=kind,vintage=vintage,year=year,years=years,
                 countries=countries,variant=boundary_variant(title),provider='ons',type=item['type'],formats=[fmt],downloads=downloads,
                 source='https://geoportal.statistics.gov.uk/datasets/'+item['id']+'/about',itemUrl='https://ons.maps.arcgis.com/home/item.html?id='+item['id'],
                 service=item.get('url') or '',published=stamp(item['created']),modified=stamp(item['modified']),method=method,
                 access='Public source',dateBasis='Title-labelled reference vintage' if years else 'Unlabelled',notes='',checked=datetime.now(timezone.utc).date().isoformat())
+    if kind=='centroid':
+        row['centroidWeight']=centroid_weight(title,kind)
+        row['centroidWeightBasis']='Not specified by the indexed source' if row['centroidWeight']=='not-specified' else 'Title-labelled method; check publisher methodology'
+    return row
 
 def verify_sources(records):
     """Check landing pages only. Large GIS files are never fetched."""
@@ -107,6 +118,20 @@ def verify_sources(records):
 def build(raw):
     registry = json.loads((ROOT/'source_records.json').read_text(encoding='utf-8'))
     rows = [r for item in raw if (r := normalize_ons(item))] + registry['items']
+    audit = json.loads((ROOT/'metadata_overrides.json').read_text(encoding='utf-8'))
+    snapshots = {x['vintage']:x for x in audit['authoritySnapshots']}
+    for row in rows:
+        if row['kind']=='centroid':
+            row.setdefault('centroidWeight',centroid_weight(row['title'],row['kind']))
+            row.setdefault('centroidWeightBasis','Not specified by the indexed source' if row['centroidWeight']=='not-specified' else 'Title-labelled method; check publisher methodology')
+        row.update(audit['records'].get(row['id'],{}))
+        if row['kind']=='boundary' and 'combined' in row['levels'] and row['vintage'] in snapshots:
+            snapshot=snapshots[row['vintage']]
+            row['areas']=snapshot['areas']
+            row['areaNamesSource']=snapshot['source']
+            row['areaNamesChecked']=snapshot['checked']
+            if any(x['code'] in audit['ccaCodes'] for x in row['areas']) and 'cca' not in row['levels']: row['levels'].append('cca')
+            row['notes']='Shared combined-authority file, including CCA features where present. Indexed names/codes were checked against this vintage. Mayoral status is not inferred from a boundary file.'
     if len({x['id'] for x in rows}) != len(rows): raise RuntimeError('Duplicate catalogue ids')
     rows.sort(key=lambda x: (-max(x['years'],default=0),x['title'].casefold(),x['id']))
     return dict(schemaVersion=2,checked=datetime.now(timezone.utc).date().isoformat(),historyStart=2010,historyEnd=YEAR,

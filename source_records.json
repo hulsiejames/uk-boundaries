@@ -3680,6 +3680,261 @@
       "access": "Public source",
       "dateBasis": "Publisher download filename (2019); not legal commencement",
       "checked": "2026-10-06"
+    },
+    {
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "variant": "Unspecified",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled current source; no invented historical validity",
+      "checked": "2026-10-06",
+      "id": "gla:greater-london-boundary",
+      "title": "Greater London boundary · Greater London Authority / Mayor of London area",
+      "provider": "gla",
+      "countries": [
+        "England"
+      ],
+      "levels": [
+        "gla",
+        "strategic"
+      ],
+      "kind": "boundary",
+      "source": "https://gis.london.gov.uk/arcgis/rest/services/apps/planning_data_map_02/FeatureServer/303",
+      "service": "https://gis.london.gov.uk/arcgis/rest/services/apps/planning_data_map_02/FeatureServer/303",
+      "downloads": [
+        {
+          "format": "GeoJSON",
+          "url": "https://gis.london.gov.uk/arcgis/rest/services/apps/planning_data_map_02/FeatureServer/303/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson"
+        }
+      ],
+      "formats": [
+        "ArcGIS service",
+        "GeoJSON"
+      ],
+      "type": "Official service",
+      "areas": [
+        {
+          "name": "Greater London",
+          "code": ""
+        }
+      ],
+      "notes": "GLA official current Greater London polygon service, EPSG:27700; GeoJSON query requests WGS84. Published layer licence: OGL v3. This area is distinct from combined authorities. No dated historical vintage is asserted."
+    },
+    {
+      "years": [],
+      "year": null,
+      "vintage": "Not labelled",
+      "variant": "Unspecified",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Unlabelled current source; no invented historical validity",
+      "checked": "2026-10-06",
+      "id": "ons:workplace-centroid-methodology",
+      "title": "Population Weighted Centroids · ONS guidance for Workplace Zones",
+      "provider": "ons",
+      "countries": [
+        "England",
+        "Wales"
+      ],
+      "levels": [
+        "workplace"
+      ],
+      "kind": "reference",
+      "source": "https://www.arcgis.com/home/item.html?id=08efe60ec0934f6fbb49b9fc5537ae33",
+      "service": "",
+      "downloads": [
+        {
+          "format": "PDF",
+          "url": "https://www.arcgis.com/sharing/rest/content/items/08efe60ec0934f6fbb49b9fc5537ae33/data"
+        }
+      ],
+      "formats": [
+        "PDF"
+      ],
+      "type": "Methodology",
+      "notes": "Confirms workplace population weighting using Census 2011 worker coordinates/counts and a median-centre algorithm. The dataset title calls these population weighted; the employment/workplace filter uses this documented workforce basis."
+    },
+    {
+      "id": "legislation:2026:158",
+      "title": "Cumbria · 2026 authority establishment instrument",
+      "provider": "legislation",
+      "countries": [
+        "England"
+      ],
+      "levels": [
+        "strategic",
+        "combined"
+      ],
+      "kind": "reference",
+      "years": [
+        2026
+      ],
+      "year": 2026,
+      "vintage": "2026 establishment instrument",
+      "source": "https://www.legislation.gov.uk/uksi/2026/158/made",
+      "downloads": [
+        {
+          "format": "PDF",
+          "url": "https://www.legislation.gov.uk/uksi/2026/158/pdfs/uksi_20260158_en.pdf"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Legislation",
+      "formats": [
+        "PDF"
+      ],
+      "areas": [
+        {
+          "name": "Cumbria",
+          "code": ""
+        }
+      ],
+      "notes": "Official establishment instrument defining constituent areas. Reference document only: no separately dated GIS polygon has been indexed for this 2026 authority. Establishment does not imply mayoral functions or an elected mayor commenced at the same time.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Year of establishment instrument; not a GIS boundary vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "legislation:2026:159",
+      "title": "Cheshire and Warrington · 2026 authority establishment instrument",
+      "provider": "legislation",
+      "countries": [
+        "England"
+      ],
+      "levels": [
+        "strategic",
+        "combined"
+      ],
+      "kind": "reference",
+      "years": [
+        2026
+      ],
+      "year": 2026,
+      "vintage": "2026 establishment instrument",
+      "source": "https://www.legislation.gov.uk/uksi/2026/159/made",
+      "downloads": [
+        {
+          "format": "PDF",
+          "url": "https://www.legislation.gov.uk/uksi/2026/159/pdfs/uksi_20260159_en.pdf"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Legislation",
+      "formats": [
+        "PDF"
+      ],
+      "areas": [
+        {
+          "name": "Cheshire and Warrington",
+          "code": ""
+        }
+      ],
+      "notes": "Official establishment instrument defining constituent areas. Reference document only: no separately dated GIS polygon has been indexed for this 2026 authority. Establishment does not imply mayoral functions or an elected mayor commenced at the same time.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Year of establishment instrument; not a GIS boundary vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "legislation:2026:362",
+      "title": "Sussex and Brighton · 2026 authority establishment instrument",
+      "provider": "legislation",
+      "countries": [
+        "England"
+      ],
+      "levels": [
+        "strategic",
+        "cca"
+      ],
+      "kind": "reference",
+      "years": [
+        2026
+      ],
+      "year": 2026,
+      "vintage": "2026 establishment instrument",
+      "source": "https://www.legislation.gov.uk/uksi/2026/362/made",
+      "downloads": [
+        {
+          "format": "PDF",
+          "url": "https://www.legislation.gov.uk/uksi/2026/362/pdfs/uksi_20260362_en.pdf"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Legislation",
+      "formats": [
+        "PDF"
+      ],
+      "areas": [
+        {
+          "name": "Sussex and Brighton",
+          "code": ""
+        }
+      ],
+      "notes": "Official establishment instrument defining constituent areas. Reference document only: no separately dated GIS polygon has been indexed for this 2026 authority. Establishment does not imply mayoral functions or an elected mayor commenced at the same time.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Year of establishment instrument; not a GIS boundary vintage",
+      "checked": "2026-10-06"
+    },
+    {
+      "id": "legislation:2026:595",
+      "title": "Hampshire and the Solent · 2026 authority establishment instrument",
+      "provider": "legislation",
+      "countries": [
+        "England"
+      ],
+      "levels": [
+        "strategic",
+        "cca"
+      ],
+      "kind": "reference",
+      "years": [
+        2026
+      ],
+      "year": 2026,
+      "vintage": "2026 establishment instrument",
+      "source": "https://www.legislation.gov.uk/uksi/2026/595/made",
+      "downloads": [
+        {
+          "format": "PDF",
+          "url": "https://www.legislation.gov.uk/uksi/2026/595/pdfs/uksi_20260595_en.pdf"
+        }
+      ],
+      "service": "",
+      "variant": "Unspecified",
+      "type": "Legislation",
+      "formats": [
+        "PDF"
+      ],
+      "areas": [
+        {
+          "name": "Hampshire and the Solent",
+          "code": ""
+        }
+      ],
+      "notes": "Official establishment instrument defining constituent areas. Reference document only: no separately dated GIS polygon has been indexed for this 2026 authority. Establishment does not imply mayoral functions or an elected mayor commenced at the same time.",
+      "method": "",
+      "published": "",
+      "modified": "",
+      "access": "Public source",
+      "dateBasis": "Year of establishment instrument; not a GIS boundary vintage",
+      "checked": "2026-10-06"
     }
   ]
 }

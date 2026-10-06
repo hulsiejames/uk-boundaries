@@ -23,8 +23,10 @@ LEVELS = [
     level('upper','Counties & unitary authorities','Administration',GB,r'counties and unitary authorities|\bCTYUA\b','upper tier|county|CTYUA'),
     level('county','Counties','Administration',['England'],r'(?<!metropolitan )\bcounties\b(?! and)|\bCTY\b','county'),
     level('metro','Metropolitan counties','Administration',['England'],r'metropolitan counties|\bMCTY\b','metropolitan county|West Yorkshire'),
-    level('combined','Combined authorities','Administration',['England'],r'combined authorities|\bCAUTH\b','CA|combined authority'),
-    level('cca','Combined county authorities','Administration',['England'],r'combined county authorities|\bCCAUTH\b','CCA|combined county authority'),
+    level('strategic','Mayoral / strategic authority areas','Administration',['England'],r'combined (?:county )?authorities|\bCAUTH\b|\bCCAUTH\b|Greater London Authority','mayor|mayoral|mayoral authorities|strategic authorities|metro mayor|MSA|MCA|MCCA|strategic authority', 'A discovery group covering combined authorities, combined county authorities and Greater London. Shared files can also contain non-mayoral authorities; selecting this group does not certify an elected mayor at that vintage. Council mayors use their existing LAD boundary, rather than a separate geography.'),
+    level('combined','Combined authorities (including mayoral)','Administration',['England'],r'combined authorities|\bCAUTH\b','CA|combined authority|mayoral combined authority|MCA'),
+    level('cca','Combined county authorities','Administration',['England'],r'combined county authorities|\bCCAUTH\b','CCA|combined county authority|mayoral combined county authority|MCCA', 'CCA features occur inside shared ONS combined-authority files. This index identifies the shared vintages from audited feature names and codes; it does not provide a separate CCA-only polygon file.'),
+    level('gla','Greater London Authority area','Administration',['England'],r'Greater London Authority','GLA|Mayor of London|Greater London', 'Greater London is separate from the combined-authority series. The current GLA layer is unlabelled, so it is not backfilled across historical years.'),
     level('ward','Electoral wards / divisions','Elections',ALL,r'\bwards?\b|county electoral divisions?|\bWD\b|\bCED\b','ward|electoral division'),
     level('parish','Civil parishes / Welsh communities','Administration',EW,r'\bparishes\b|civil parished|\bPAR\b','parish|community'),
     level('community-sc','Community councils · Scotland','Administration',['Scotland'],aliases='community council'),
@@ -69,6 +71,8 @@ LEVELS = [
 
 PROVIDERS = [
     dict(id='ons',name='Office for National Statistics',url='https://geoportal.statistics.gov.uk/',description='UK administrative releases; England and Wales census areas; health, regional and functional geographies; names, codes and lookups.'),
+    dict(id='gla',name='Greater London Authority',url='https://data.london.gov.uk/',description='Official Greater London boundary service and London geography files. Current layers are not a dated historical archive.'),
+    dict(id='legislation',name='UK legislation · The National Archives',url='https://www.legislation.gov.uk/',description='Establishment instruments for 2026 strategic authorities. These reference documents define constituent areas; they are not GIS polygon downloads.'),
     dict(id='scotgov',name='Scottish Government',url='https://www.gov.scot/collections/small-area-statistics/',description='Data Zones and Intermediate Zones, including 2001, 2011 and 2022 vintages, centroids and matching files.'),
     dict(id='nrs',name='National Records of Scotland',url='https://www.nrscotland.gov.uk/statistics-and-data/geography-products/',description='Scottish census Output Areas, settlements, localities, islands and census linkage files. Older data remains available through official services and the NRS archive.'),
     dict(id='nisra',name='NISRA',url='https://www.nisra.gov.uk/support/geography',description='Northern Ireland OA 2001, Small Areas/SOAs 2011, Data Zones/Super Data Zones 2021 and administrative lookups.'),
