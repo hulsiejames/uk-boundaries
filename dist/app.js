@@ -1,9 +1,9 @@
-import {filterItems,searchable,coverageRows,coverageCell,csv,WEIGHTS} from './catalogue-core.mjs';
+import {filterItems,searchable,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,BOUNDARY_DETAILS,csv,WEIGHTS} from './catalogue-core.mjs';
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=value=>{try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:'';}catch{return '';}};
 const link=(url,label)=>safeURL(url)?`<a href="${esc(safeURL(url))}" target="_blank" rel="noopener">${esc(label)}</a>`:'';
-const detail={BFE:'Full · extent of realm',BFC:'Full · coastline clipped',BGC:'Generalised · clipped',BSC:'Super generalised · clipped',Unspecified:'See source specification',BUC:'BUC · see source',BNC:'BNC · see source'};
+const detail=BOUNDARY_DETAILS;
 const names={boundary:'boundaries',lookup:'lookups / linkage',centroid:'centroids',reference:'names, codes & directories'};
 let data,items=[],filtered=[],limit=30,rows=[];
 const countries=['England','Wales','Scotland','Northern Ireland'];
@@ -20,6 +20,7 @@ function reset(render=true){for(const f of fields)$(f).value='';$('country').val
 function renderResults(){
  if(!data)return;
  const centroidView=['centroid',''].includes($('kind').value);$('centroid-options').hidden=!centroidView;if(!centroidView)$('centroidWeight').value='';
+ const boundaryView=['boundary',''].includes($('kind').value);$('boundary-options').hidden=!boundaryView;if(!boundaryView)$('variant').value='';
  filtered=filterItems(items,filters(),data.levels,data.providers);
  $('result-count').textContent=`${filtered.length.toLocaleString('en-GB')} official source ${filtered.length===1?'record':'records'}`;
  const level=data.levels.find(l=>l.id===$('level').value);
@@ -55,22 +56,33 @@ $('export-index').onclick=()=>{
 $('export-manifest').onclick=()=>download(JSON.stringify({schemaVersion:data.schemaVersion,checked:data.checked,filters:filters(),levels:data.levels,providers:data.providers,items:filtered.map(exportable)},null,2),'uk-boundary-manifest.json','application/json');
 function drill(level,country,year){reset(false);$('level').value=level;$('country').value=country;
  if(year==='older'){$('older').checked=true;$('year').value='older';}else if(year)$('year').value=year;
+ $('kind').value=$('coverage-kind').value;$('centroidWeight').value=$('coverage-weight').value;$('variant').value=$('coverage-variant').value;
  renderResults();showTab('catalogue');window.scrollTo({top:0,behavior:'instant'});
 }
 function renderCoverage(){
  if(!data)return;
  const isCentroid=$('coverage-kind').value==='centroid';$('coverage-centroid-options').hidden=!isCentroid;if(!isCentroid)$('coverage-weight').value='';
- rows=coverageRows(items,data.levels,$('coverage-country').value?[$('coverage-country').value]:countries,$('coverage-group').value,$('coverage-kind').value,$('coverage-weight').value);
+ const isBoundary=$('coverage-kind').value==='boundary';$('coverage-boundary-options').hidden=!isBoundary;if(!isBoundary)$('coverage-variant').value='';
+ rows=coverageRows(items,data.levels,$('coverage-country').value?[$('coverage-country').value]:countries,$('coverage-group').value,$('coverage-kind').value,$('coverage-weight').value,$('coverage-variant').value);
  const years=Array.from({length:data.historyEnd-2010+1},(_,i)=>2010+i),columns=['older',...years,'Unknown'];
- const cells=row=>columns.map(y=>{const matches=coverageCell(row,y);return `<td>${matches.length?`<button class="coverage-cell" data-level="${row.level.id}" data-country="${esc(row.country)}" data-year="${y}" aria-label="${esc(row.country+' · '+row.level.label+' · '+(y==='Unknown'?'unlabelled':y==='older'?'pre-2010':y)+' · '+matches.length+' source records')}">${matches.length}</button>`:'<span title="No indexed source snapshot">—</span>'}</td>`;}).join('');
- $('parity').innerHTML=`<table><caption>Indexed ${esc($('coverage-weight').value?(WEIGHTS[$('coverage-weight').value]+' centroids'):names[$('coverage-kind').value])} by reference vintage</caption><thead><tr><th scope="col">Country / reporting level</th>${columns.map(y=>`<th scope="col">${y==='older'?'Earlier':y==='Unknown'?'Not labelled':y}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr><th scope="row"><button class="row-link" data-level="${row.level.id}" data-country="${esc(row.country)}">${esc(row.level.label)}</button><span class="source-title">${esc(row.country)} · ${esc(row.level.group)}</span></th>${cells(row)}</tr>`).join('')}</tbody></table>`;
+ const {indexed,missing}=partitionCoverageRows(rows,columns);
+ const yearLabel=y=>y==='older'?'Earlier':y==='Unknown'?'Not labelled':y;
+ const button=(row,y,count,text)=>`<button class="coverage-cell" data-level="${row.level.id}" data-country="${esc(row.country)}" data-year="${y}" aria-label="${esc(row.country+' · '+row.level.label+' · '+(y==='Unknown'?'unlabelled':y==='older'?'pre-2010':y)+' · '+count+' source records')}">${text}</button>`;
+ const cells=row=>columns.map(y=>{const count=coverageCell(row,y).length;return `<td>${count?button(row,y,count,count):'<span title="No indexed source snapshot">—</span>'}</td>`;}).join('');
+ const heading=row=>`<button class="row-link" data-level="${row.level.id}" data-country="${esc(row.country)}">${esc(row.level.label)}</button><span class="source-title">${esc(row.country)} · ${esc(row.level.group)}</span>`;
+ const caption='Indexed '+($('coverage-weight').value?(WEIGHTS[$('coverage-weight').value]+' centroids'):names[$('coverage-kind').value])+($('coverage-variant').value?' · '+(detail[$('coverage-variant').value]||$('coverage-variant').value):'')+' by reference vintage';
+ $('parity').innerHTML=indexed.length?`<div class="parity-table coverage-desktop"><table><caption>${esc(caption)}</caption><thead><tr><th scope="col">Country / reporting level</th>${columns.map(y=>`<th scope="col">${yearLabel(y)}</th>`).join('')}</tr></thead><tbody>${indexed.map(row=>`<tr><th scope="row">${heading(row)}</th>${cells(row)}</tr>`).join('')}</tbody></table></div><div class="coverage-cards" aria-label="${esc(caption)}">${indexed.map(row=>`<article class="coverage-card"><h3>${heading(row)}</h3><div class="coverage-vintages">${columns.map(y=>{const count=coverageCell(row,y).length;return count?button(row,y,count,`${yearLabel(y)} <span class="vintage-count">${count}</span>`):'';}).join('')}</div></article>`).join('')}</div>`:'<div class="empty"><h3>No indexed files under these filters.</h3><p>Try another product, reporting group or boundary detail. The reporting rows are listed in “Not found” below.</p></div>';
+ $('coverage-row-count').textContent=`${indexed.length} reporting ${indexed.length===1?'row':'rows'} with indexed files · ${missing.length} not found under these filters.`;
+ $('not-found').hidden=!missing.length;
+ $('not-found-summary').textContent=`Not found (${missing.length} reporting ${missing.length===1?'row':'rows'})`;
+ $('not-found-list').innerHTML=missing.map(row=>`<li><strong>${esc(row.level.label)}</strong><span class="source-title">${esc(row.country)} · ${esc(row.level.group)}</span></li>`).join('');
  $('coverage-explanation').textContent=$('coverage-kind').value==='lookup'?'Numbers count source records referencing that year. A mixed-vintage lookup can appear in several columns. Select a cell to find its files. A dash means no matching indexed record.':'Numbers count indexed source records, not polygons. Select a cell to find its files. A dash is an index gap, not evidence of abolition or a boundary change. “Earlier” includes support vintages for reporting around 2010.';
 }
-$('parity').onclick=e=>{const b=e.target.closest('button[data-level]');if(!b)return;drill(b.dataset.level,b.dataset.country,b.dataset.year);$('kind').value=$('coverage-kind').value;$('centroidWeight').value=$('coverage-weight').value;renderResults();};
-for(const id of ['coverage-country','coverage-group','coverage-kind','coverage-weight'])$(id).onchange=renderCoverage;
+$('parity').onclick=e=>{const b=e.target.closest('button[data-level]');if(b)drill(b.dataset.level,b.dataset.country,b.dataset.year);};
+for(const id of ['coverage-country','coverage-group','coverage-kind','coverage-weight','coverage-variant'])$(id).onchange=renderCoverage;
 $('export-coverage').onclick=()=>{
- const flat=[];for(const row of rows)for(const year of ['older',...Array.from({length:data.historyEnd-2010+1},(_,i)=>i+2010),'Unknown'])flat.push({country:row.country,level:row.level.label,product:$('coverage-kind').value,centroid_weight:$('coverage-weight').value,reference_year:year,record_count:coverageCell(row,year).length,status:coverageCell(row,year).length?'indexed':'no indexed record',basis:'Source vintages; not certified legal annual validity'});
- download(csv(flat,['country','level','product','centroid_weight','reference_year','record_count','status','basis']),'uk-boundary-coverage.csv','text/csv;charset=utf-8');
+ const flat=[];for(const row of rows)for(const year of ['older',...Array.from({length:data.historyEnd-2010+1},(_,i)=>i+2010),'Unknown'])flat.push({country:row.country,level:row.level.label,product:$('coverage-kind').value,centroid_weight:$('coverage-weight').value,boundary_variant:$('coverage-variant').value,reference_year:year,record_count:coverageCell(row,year).length,status:coverageCell(row,year).length?'indexed':'no indexed record',basis:'Source vintages; not certified legal annual validity'});
+ download(csv(flat,['country','level','product','centroid_weight','boundary_variant','reference_year','record_count','status','basis']),'uk-boundary-coverage.csv','text/csv;charset=utf-8');
 };
 async function init(){try{
  const response=await fetch('catalogue.json');if(!response.ok)throw Error('Catalogue could not be loaded.');data=await response.json();if(data.schemaVersion!==2)throw Error('Unsupported catalogue format.');
@@ -82,6 +94,7 @@ async function init(){try{
  options('provider',data.providers.map(p=>({value:p.id,label:p.name})),'All publishers');
  options('group',groups,'All reporting groups');
  options('format',[...new Set(items.flatMap(x=>x.formats))].sort(),'Any format');
+ for(const id of ['variant','coverage-variant'])options(id,boundaryVariants(items),'Any boundary detail');
  options('coverage-group',[{value:'Core',label:'Core reporting levels'},...groups],'All reporting groups');$('coverage-group').value='Core';$('coverage-country').value='England';
  const boundaries=items.filter(x=>x.kind==='boundary');
  $('coverage-summary').innerHTML=`<div><strong>${items.length.toLocaleString('en-GB')}</strong><span>source records</span></div><div><strong>${data.levels.length}</strong><span>reporting levels</span></div><div><strong>${data.providers.filter(p=>items.some(x=>x.provider===p.id)).length}</strong><span>official publishers</span></div>${countries.map(c=>`<div><strong>${boundaries.filter(x=>x.countries.includes(c)).length.toLocaleString('en-GB')}</strong><span>${esc(c)} boundary records</span></div>`).join('')}`;

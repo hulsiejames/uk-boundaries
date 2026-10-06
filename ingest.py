@@ -60,7 +60,7 @@ def product_kind(title):
     return None
 
 def boundary_variant(title):
-    code = re.search(r'\b(BFE|BFC|BGC|BSC|BUC|BNC)\b', title, re.I)
+    code = re.search(r'\b(BFE|BFC|BGE|BGC|BGG|BSC|BSE|BUC|BUE|BNC)\b', title, re.I)
     if code: return code.group(1).upper()
     for text, value in [('full clipped','BFC'),('full extent','BFE'),('super generalised','BSC'),('generalised','BGC')]:
         if text in title.lower(): return value
