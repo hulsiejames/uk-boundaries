@@ -85,6 +85,12 @@ Use full-resolution, consistently clipped geometry and suitable projected coordi
 
 ## Hosting
 
-`.openai/hosting.json` identifies the existing owner-private Site and its `dist` static directory. Local use and GitHub do not require Sites. Publishing uses the same Site identity and preserves its audience.
+The public website is hosted at **https://hulsiejames.github.io/uk-boundaries/** using free GitHub Pages hosting for this public repository.
+
+`.github/workflows/pages.yml` runs the Python and Node regression suites and checks browser JavaScript syntax on pull requests and pushes to `main`. After successful checks on `main`, it publishes only `dist/` using GitHub's Pages actions. Pull requests run tests without publishing. A manual deployment can also be started from the Actions tab. Repository Settings → Pages must use **GitHub Actions** as its source. The workflow uses GitHub's built-in token; no personal deployment credentials are needed.
+
+All application asset, module and catalogue paths are relative, so the `/uk-boundaries/` project path works without rewriting URLs. Updating the website does not rescan official sources: refresh and commit the catalogue separately when needed.
+
+`.openai/hosting.json` retains the existing owner-private Site identity for the earlier preview. Local use and GitHub Pages do not require Sites.
 
 Each dataset retains its publisher's own licence and attribution. There is no blanket licence for externally linked GIS data; inspect the official source before use.
