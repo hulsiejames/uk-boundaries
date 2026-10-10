@@ -57,15 +57,24 @@ Exports contain the complete filtered result set:
 
 GIS downloads come from the original publisher. No national polygon datasets are checked into this repository. The shipped `dist/catalogue.json` is necessary metadata for the static application; `source_records.json` is the audited national-source registry used to rebuild it.
 
+Every result has a **download availability tag**. Direct file links and publisher-confirmed Hub downloads are distinct; an ArcGIS service or an export capability alone does not confirm a publisher download. Delivery filters select either route or all downloadable records. Tags are a metadata snapshot, not a guarantee that every remote file has been tested. The publisher supplies licences, formats and any generated download files.
+
+**Attributes** opens a schema panel where captured: field names, aliases, types, lengths, nullability, layer name, geometry type, CRS and publisher record count. These are publisher **layer** schemas; a downloaded format may omit or truncate fields. `dist/dataset-metadata.json` contains this metadata, loads only when opening attributes or exporting, and contains no feature records or polygons. CSV and JSON exports include the full schemas, availability and date provenance. A failed schema fetch offers a retry instead of silently omitting fields from an export.
+
+The enrichment snapshot captured **2,275 layers across 2,274 source records** on **9 October 2026 (UTC)**, including every indexed ONS feature service. There are **775 direct-download records**, **2,273 publisher-download records**, and **29 records with unconfirmed download availability**. Unconfirmed includes source directories, legislation and services for which publisher downloads were not exposed. Direct CSV/Excel/ZIP files and non-ArcGIS/WFS sources do not automatically have captured schemas. Five OSNI services denied anonymous metadata access; their existing discovery routes remain visible. The ONS inventory itself remains the 6 October scan.
+
 ## Refresh and audit
 
 ```sh
 python ingest.py
 python ingest.py --verify-sources
-python ingest.py --ons-cache /path/to/ons-raw.json
+python ingest.py --ons-cache /path/to/ons-raw.json --ons-checked 2026-10-06
+python ingest.py --refresh-metadata
 ```
 
 The normal refresh paginates supported item types in the official ONS ArcGIS organisation `ESMARspQHYMw9BZ9`, rejects incomplete/duplicate pagination, classifies boundary/lookup/centroid/reference products, and combines them with the curated registry. Unknown country scope and unlabelled years remain unknown. Source records are formatted one per line to keep refresh diffs reviewable.
+
+`--refresh-metadata` captures public ArcGIS service/layer definitions and the matching ArcGIS Hub dataset metadata using actual layer IDs, including tables and nonzero IDs. It never queries features, generates an export or downloads a GIS file. The checked-in cache is reused by ordinary builds. Unavailable refreshes retain the last successful snapshot with its original check date and record the failed attempt. Changing a source service invalidates the old schema association. Cached ONS builds require the original scan date so the inventory is not labelled freshly checked.
 
 The curated registry is deliberately manual: its records were explored and checked against national publisher pages and Scottish ISO/CSW metadata. Refreshing ONS does not automatically rediscover changed Scottish, Welsh, NISRA or OSNI links. Revisit those sources, amend `source_records.json`, and update its `checked` date. `--verify-sources` checks landing-page responses without downloading GIS files; it does not prove every file or service is available. Individual curated records retain their own check date.
 
@@ -78,6 +87,8 @@ See [docs/source-audit.md](docs/source-audit.md) for the explored sources, date 
 ## Date and translation semantics
 
 **A file vintage is not a legal effective date.** A 2026 upload can describe 2011 geometry. Lookups preserve all source/target/assignment years rather than having one invented boundary year. The coverage grid measures indexed source vintages only: a gap does not indicate a change or abolition, and a tick does not certify annual legal validity.
+
+The dates panel distinguishes **publisher publication**, **uploaded / item created**, **info updated**, and **data updated**, with a source and basis retained for each. Publisher citation publication/revision dates take precedence over service data edits. A generic item modification or schema edit is not promoted to a data update. Different dates in a multilayer service stay per layer. Missing dates remain “Not supplied”; timestamps retain their precision and supplied time zone. UTC item timestamps are labelled UTC; publisher timestamps without an offset are explicitly labelled “time zone not supplied”. Legacy `published`/`modified` fields retain their existing item-created/item-modified meanings; the additive `dates` object provides the separate, precise dates.
 
 Census geographies can remain in use between revisions. Small-area reporting around 2010 may use a 2001 geography. An explicitly labelled 2010 local-authority polygon has not been found in this index; neither 2009 nor 2011 is silently certified as the boundary at a selected date in 2010.
 

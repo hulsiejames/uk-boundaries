@@ -3,6 +3,7 @@ import argparse, concurrent.futures, json, re, urllib.parse, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from catalogue_config import LEVELS, PROVIDERS, ALL, GB, EW
+from dataset_metadata import timestamp, refresh_metadata, apply_metadata
 
 ROOT = Path(__file__).resolve().parent
 YEAR = datetime.now(timezone.utc).year
@@ -91,11 +92,12 @@ def normalize_ons(item):
     method = next((n for n in ['Exact Fit','Best Fit','Population Weighted','Area Weighted'] if n.lower() in title.lower()), 'Not specified') if kind == 'lookup' else ''
     fmt = {'Feature Service':'ArcGIS service','Shapefile':'Shapefile','CSV Collection':'CSV','Microsoft Excel':'Excel','CSV':'CSV','GeoJson':'GeoJSON'}[item['type']]
     downloads = [] if item['type'] == 'Feature Service' else [dict(format=fmt, url=f'https://www.arcgis.com/sharing/rest/content/items/{item["id"]}/data')]
-    stamp = lambda value: datetime.fromtimestamp(value/1000, timezone.utc).date().isoformat()
+    stamp = lambda value: timestamp(value)[:10] if timestamp(value) else None
     row = dict(id='ons:'+item['id'],title=title,levels=ids,kind=kind,vintage=vintage,year=year,years=years,
                 countries=countries,variant=boundary_variant(title),provider='ons',type=item['type'],formats=[fmt],downloads=downloads,
                 source='https://geoportal.statistics.gov.uk/datasets/'+item['id']+'/about',itemUrl='https://ons.maps.arcgis.com/home/item.html?id='+item['id'],
                 service=item.get('url') or '',published=stamp(item['created']),modified=stamp(item['modified']),method=method,
+                uploaded=timestamp(item.get('created')),infoUpdated=timestamp(item.get('modified')),
                 access='Public source',dateBasis='Title-labelled reference vintage' if years else 'Unlabelled',notes='',checked=datetime.now(timezone.utc).date().isoformat())
     if kind=='centroid':
         row['centroidWeight']=centroid_weight(title,kind)
@@ -115,9 +117,12 @@ def verify_sources(records):
     for result in results: print(json.dumps(result))
     if any('error' in r for r in results): raise RuntimeError('A curated source failed; existing catalogue has not been replaced.')
 
-def build(raw):
+def build(raw, metadata=None, ons_checked=None):
     registry = json.loads((ROOT/'source_records.json').read_text(encoding='utf-8'))
     rows = [r for item in raw if (r := normalize_ons(item))] + registry['items']
+    if ons_checked:
+        for row in rows:
+            if row['provider']=='ons': row['checked']=ons_checked
     audit = json.loads((ROOT/'metadata_overrides.json').read_text(encoding='utf-8'))
     snapshots = {x['vintage']:x for x in audit['authoritySnapshots']}
     for row in rows:
@@ -132,20 +137,35 @@ def build(raw):
             row['areaNamesChecked']=snapshot['checked']
             if any(x['code'] in audit['ccaCodes'] for x in row['areas']) and 'cca' not in row['levels']: row['levels'].append('cca')
             row['notes']='Shared combined-authority file, including CCA features where present. Indexed names/codes were checked against this vintage. Mayoral status is not inferred from a boundary file.'
+    for row in rows: apply_metadata(row, (metadata or {}).get('records', {}).get(row['id']))
     if len({x['id'] for x in rows}) != len(rows): raise RuntimeError('Duplicate catalogue ids')
     rows.sort(key=lambda x: (-max(x['years'],default=0),x['title'].casefold(),x['id']))
     return dict(schemaVersion=2,checked=datetime.now(timezone.utc).date().isoformat(),historyStart=2010,historyEnd=YEAR,
                 levels=LEVELS,providers=PROVIDERS,curatedChecked=registry['checked'],items=rows,
-                sourceAudit=dict(onsItemsScanned=len(raw),curatedRecords=len(registry['items']),scope='Official metadata and curated national sources. No GIS file mirror.'))
+                sourceAudit=dict(onsItemsScanned=len(raw),onsMetadataChecked=ons_checked or datetime.now(timezone.utc).date().isoformat(),
+                                 publisherMetadataChecked=(metadata or {}).get('checked'),curatedRecords=len(registry['items']),scope='Official metadata and curated national sources. No GIS file mirror.'))
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ons-cache',type=Path,help='Rebuild from a saved raw ONS metadata array')
+    parser.add_argument('--ons-checked',help='Original YYYY-MM-DD scan date when rebuilding from a raw cache')
     parser.add_argument('--verify-sources',action='store_true',help='Check curated source landing pages')
+    parser.add_argument('--refresh-metadata',action='store_true',help='Capture public ArcGIS layer schemas, download flags and publisher dates (no geometry)')
     args = parser.parse_args()
+    if args.ons_cache and not args.ons_checked: parser.error('--ons-cache requires --ons-checked so cached item metadata is not labelled freshly scanned')
+    if args.ons_checked:
+        try: datetime.strptime(args.ons_checked,'%Y-%m-%d')
+        except ValueError: parser.error('--ons-checked must be YYYY-MM-DD')
     if args.verify_sources: verify_sources(json.loads((ROOT/'source_records.json').read_text(encoding='utf-8'))['items'])
     raw = json.loads(args.ons_cache.read_text(encoding='utf-8')) if args.ons_cache else fetch_ons()
-    payload = build(raw)
+    cache_path = ROOT/'dist'/'dataset-metadata.json'
+    metadata = json.loads(cache_path.read_text(encoding='utf-8')) if cache_path.exists() else None
+    if args.refresh_metadata:
+        metadata = refresh_metadata(build(raw)['items'], metadata)
+        # One cache record per line; reproducible and served only when attributes are needed.
+        cache_path.write_text('{"schemaVersion":1,"checked":'+json.dumps(metadata['checked'])+',"records":{\n'+
+                              ',\n'.join(json.dumps(k)+':'+json.dumps(v,ensure_ascii=False,separators=(',',':')) for k,v in sorted(metadata['records'].items()))+'\n}}\n',encoding='utf-8',newline='\n')
+    payload = build(raw, metadata, args.ons_checked if args.ons_cache else None)
     # One metadata record per line keeps refresh diffs reviewable.
     header = {k:v for k,v in payload.items() if k!='items'}
     text = json.dumps(header,ensure_ascii=False,indent=2)[:-2]+',\n  "items": [\n'
