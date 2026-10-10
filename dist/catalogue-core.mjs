@@ -1,13 +1,24 @@
 // Pure catalogue queries shared by the browser and regression checks.
 export const CORE_GROUPS = ['Census','Administration','Regions & countries'];
 export const WEIGHTS = {population:'Population weighted',employment:'Employment / workplace weighted',address:'Address weighted',geometric:'Geometric', 'not-specified':'Not specified'};
-export const DOWNLOAD_STATUS = {direct:'Downloadable · direct file',publisher:'Downloadable · publisher', 'not-offered':'Downloads not offered',unknown:'Download not confirmed'};
-export function downloadStatus(item) { return item.downloads?.length ? 'direct' : item.downloadAvailability?.status || 'unknown'; }
+export const DOWNLOAD_STATUS = {direct:'Downloadable · direct file',publisher:'Downloadable · publisher', unavailable:'Download link unavailable','not-offered':'Downloads not offered',unknown:'Download not confirmed'};
+export function downloadStatus(item) {
+  if(item.downloads?.length&&item.linkHealth?.downloadState==='missing')return 'unavailable';
+  if(item.downloads?.length&&item.linkHealth?.downloadState==='unconfirmed')return 'unknown';
+  return item.downloads?.length ? 'direct' : item.downloadAvailability?.status || 'unknown';
+}
+export function snapshotAge(checked, current=Date.now()) {
+  const stamp=Date.parse(checked||'');
+  if(!Number.isFinite(stamp))return {days:null,stale:true};
+  const days=Math.max(0,Math.floor((current-stamp)/86400000));
+  return {days,stale:days>14};
+}
 export function deliveryMatches(item, delivery) {
   const status=downloadStatus(item);
   return !delivery || (delivery==='downloadable' ? ['direct','publisher'].includes(status) :
-    delivery==='file' ? status==='direct' : delivery==='publisher' ? status==='publisher' :
+    delivery==='file' ? !!item.downloads?.length : delivery==='publisher' ? status==='publisher' :
     delivery==='service' ? !!item.service : delivery==='unknown' ? status==='unknown' :
+    delivery==='attention' ? item.linkHealth?.state==='attention'||item.sourceListing==='not-found' :
     delivery==='source' ? !item.downloads.length&&!item.service : false);
 }
 export function dateLabel(value, full=false) {
@@ -23,7 +34,7 @@ export function dateLabel(value, full=false) {
 export function attachAttributes(item, metadata) {
   const entry=metadata.records?.[item.attributes?.key];
   if(!entry||entry.service!==item.service||entry.checked!==item.attributes.checked)throw Error('Attribute metadata does not match this catalogue. Reload and try again.');
-  return {...item,attributeSchema:entry.layers,attributeMetadataErrors:entry.errors||[],attributeLastAttempt:entry.lastAttempt||null};
+  return {...item,attributeSchema:entry.layers,attributeMetadataErrors:[...(entry.errors||[]),...(entry.lastAttemptErrors||[])],attributeLastAttempt:entry.lastAttempt||null};
 }
 export const BOUNDARY_DETAILS = {
   BFC:'BFC · Full resolution, coastline clipped', BFE:'BFE · Full resolution, extent of realm',

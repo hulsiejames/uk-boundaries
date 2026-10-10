@@ -4,6 +4,12 @@ import json
 import re
 import urllib.request
 from datetime import datetime, timezone
+from pathlib import Path
+
+
+def write_metadata(metadata, path):
+    Path(path).write_text('{"schemaVersion":1,"checked":'+json.dumps(metadata['checked'])+',"records":{\n'+
+                         ',\n'.join(json.dumps(k)+':'+json.dumps(v,ensure_ascii=False,separators=(',',':')) for k,v in sorted(metadata['records'].items()))+'\n}}\n',encoding='utf-8',newline='\n')
 
 
 def timestamp(value):
@@ -94,6 +100,7 @@ def capture_service(row):
                 result['errors'].append('Layer '+str(summary['id'])+': '+str(exc))
     except Exception as exc:
         result['errors'].append('Service: '+str(exc))
+    if not result['layers'] and not result['errors']: result['errors'].append('Service returned no readable layer or table metadata')
     result['status'] = 'partial' if result['errors'] and result['layers'] else 'unavailable' if result['errors'] else 'captured'
     return result
 
@@ -106,7 +113,7 @@ def refresh_metadata(rows, previous=None):
     with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
         for index, (row, entry) in enumerate(zip(eligible, pool.map(capture_service, eligible)), 1):
             old = records.get(row['id'])
-            if entry['status'] == 'unavailable' and old and old['service'] == row['service'] and old.get('layers'):
+            if entry['status'] in ('unavailable','partial') and old and old['service'] == row['service'] and old.get('layers') and (entry['status']=='unavailable' or old['status']=='captured'):
                 entry = dict(old, lastAttempt=entry['checked'], lastAttemptErrors=entry['errors'])
             records[row['id']] = entry
             if index % 100 == 0 or index == len(eligible):
