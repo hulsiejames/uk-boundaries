@@ -94,6 +94,14 @@ class PublisherMetadata(unittest.TestCase):
         self.assertNotIn('attributes',row)
         self.assertEqual(row['downloadAvailability']['status'],'unknown')
 
+    def test_partial_hub_outage_does_not_erase_a_previously_complete_snapshot(self):
+        old=dict(service=self.row()['service'],checked='2026-10-06',status='captured',layers=[normalize_layer(self.layer(),'https://example.org/7',dict(downloadable=True))],errors=[])
+        partial=dict(service=self.row()['service'],checked='2026-10-10',status='partial',layers=[normalize_layer(self.layer(),'https://example.org/7')],errors=['Hub layer 7: temporary failure'])
+        with patch('dataset_metadata.capture_service',return_value=partial): cache=refresh_metadata([self.row()],dict(records={'ons:example':old}))
+        entry=cache['records']['ons:example']
+        self.assertEqual(entry['checked'],'2026-10-06');self.assertTrue(entry['layers'][0]['downloadable'])
+        self.assertEqual(entry['lastAttempt'],'2026-10-10');self.assertIn('temporary failure',entry['lastAttemptErrors'][0])
+
 
 class ShippedMetadata(unittest.TestCase):
     def test_screenshot_example_and_cache_match_the_index(self):

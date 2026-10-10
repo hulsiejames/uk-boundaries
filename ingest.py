@@ -3,7 +3,7 @@ import argparse, concurrent.futures, json, re, urllib.parse, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from catalogue_config import LEVELS, PROVIDERS, ALL, GB, EW
-from dataset_metadata import timestamp, refresh_metadata, apply_metadata
+from dataset_metadata import timestamp, refresh_metadata, apply_metadata, write_metadata
 
 ROOT = Path(__file__).resolve().parent
 YEAR = datetime.now(timezone.utc).year
@@ -145,6 +145,14 @@ def build(raw, metadata=None, ons_checked=None):
                 sourceAudit=dict(onsItemsScanned=len(raw),onsMetadataChecked=ons_checked or datetime.now(timezone.utc).date().isoformat(),
                                  publisherMetadataChecked=(metadata or {}).get('checked'),curatedRecords=len(registry['items']),scope='Official metadata and curated national sources. No GIS file mirror.'))
 
+def write_catalogue(payload, path):
+    """One metadata record per line keeps refresh diffs reviewable."""
+    header = {k:v for k,v in payload.items() if k!='items'}
+    text = json.dumps(header,ensure_ascii=False,indent=2)[:-2]+',\n  "items": [\n'
+    text += ',\n'.join('    '+json.dumps(x,ensure_ascii=False) for x in payload['items'])+'\n  ]\n}\n'
+    Path(path).write_text(text,encoding='utf-8',newline='\n')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ons-cache',type=Path,help='Rebuild from a saved raw ONS metadata array')
@@ -162,15 +170,9 @@ def main():
     metadata = json.loads(cache_path.read_text(encoding='utf-8')) if cache_path.exists() else None
     if args.refresh_metadata:
         metadata = refresh_metadata(build(raw)['items'], metadata)
-        # One cache record per line; reproducible and served only when attributes are needed.
-        cache_path.write_text('{"schemaVersion":1,"checked":'+json.dumps(metadata['checked'])+',"records":{\n'+
-                              ',\n'.join(json.dumps(k)+':'+json.dumps(v,ensure_ascii=False,separators=(',',':')) for k,v in sorted(metadata['records'].items()))+'\n}}\n',encoding='utf-8',newline='\n')
+        write_metadata(metadata,cache_path)
     payload = build(raw, metadata, args.ons_checked if args.ons_cache else None)
-    # One metadata record per line keeps refresh diffs reviewable.
-    header = {k:v for k,v in payload.items() if k!='items'}
-    text = json.dumps(header,ensure_ascii=False,indent=2)[:-2]+',\n  "items": [\n'
-    text += ',\n'.join('    '+json.dumps(x,ensure_ascii=False) for x in payload['items'])+'\n  ]\n}\n'
-    (ROOT/'dist'/'catalogue.json').write_text(text,encoding='utf-8',newline='\n')
+    write_catalogue(payload,ROOT/'dist'/'catalogue.json')
     print('Saved',len(payload['items']),'records across',len(LEVELS),'reporting levels.')
 
 if __name__ == '__main__': main()

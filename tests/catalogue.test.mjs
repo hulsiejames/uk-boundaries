@@ -1,9 +1,23 @@
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {filterItems,countryMatches,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,csv,searchable,downloadStatus,deliveryMatches,dateLabel,attachAttributes} from '../dist/catalogue-core.mjs';
+import {filterItems,countryMatches,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,csv,searchable,downloadStatus,deliveryMatches,dateLabel,attachAttributes,snapshotAge} from '../dist/catalogue-core.mjs';
 const data=JSON.parse(readFileSync(new URL('../dist/catalogue.json',import.meta.url),'utf8'));
 const find=f=>filterItems(data.items,f,data.levels,data.providers);
+test('freshness distinguishes an old snapshot from a recently checked one',()=>{
+  const current=Date.parse('2026-10-20T12:00:00Z');
+  assert.deepEqual(snapshotAge('2026-10-19T12:00:00Z',current),{days:1,stale:false});
+  assert.deepEqual(snapshotAge('2026-10-01T12:00:00Z',current),{days:19,stale:true});
+  assert.deepEqual(snapshotAge(null,current),{days:null,stale:true});
+});
+test('known missing downloads are excluded from downloadable results without hiding their history',()=>{
+  const missing={downloads:[{url:'https://example.org/file'}],linkHealth:{downloadState:'missing',state:'attention'}};
+  assert.equal(downloadStatus(missing),'unavailable');assert.equal(deliveryMatches(missing,'downloadable'),false);
+  assert.ok(deliveryMatches(missing,'file'));assert.ok(deliveryMatches(missing,'attention'));
+  const restricted={...missing,linkHealth:{downloadState:'unconfirmed',state:'attention'}};
+  assert.equal(downloadStatus(restricted),'unknown');assert.ok(deliveryMatches(restricted,'unknown'));
+  assert.ok(deliveryMatches({downloads:[],sourceListing:'not-found'},'attention'));
+});
 test('download filter includes publisher exports without treating every service as a file',()=>{
   const direct={downloads:[{url:'https://example.org/file.zip'}],service:''};
   const publisher={downloads:[],service:'https://example.org/FeatureServer',downloadAvailability:{status:'publisher'}};

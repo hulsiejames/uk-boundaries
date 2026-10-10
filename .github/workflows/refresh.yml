@@ -1,0 +1,76 @@
+name: Check and refresh catalogue
+
+on:
+  schedule:
+    - cron: '23 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      open_pr:
+        description: 'Open/update the review PR after checks pass (false = report only)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalogue-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Refresh listings, schemas and links
+        run: python refresh.py --apply --output-dir "${{ runner.temp }}/catalogue-refresh"
+      - name: Validate the candidate
+        run: |
+          python -m unittest discover -s tests
+          node --test tests/catalogue.test.mjs
+          node --check dist/app.js
+          git diff --check
+      - name: Add report to run summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f "${{ runner.temp }}/catalogue-refresh/summary.md" ]; then
+            cat "${{ runner.temp }}/catalogue-refresh/summary.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Refresh failed before a candidate was produced. The published snapshot was preserved; inspect the logs.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Save the candidate and report
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: catalogue-refresh-report
+          path: ${{ runner.temp }}/catalogue-refresh/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Open or update the catalogue PR
+        if: success() && (github.event_name == 'schedule' || inputs.open_pr)
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        with:
+          branch: automated/catalogue-refresh
+          base: main
+          title: 'Refresh catalogue metadata and link checks'
+          commit-message: 'Refresh catalogue metadata and link checks'
+          body-path: ${{ runner.temp }}/catalogue-refresh/summary.md
+          add-paths: |
+            dist/catalogue.json
+            dist/dataset-metadata.json
+            dist/refresh-status.json
