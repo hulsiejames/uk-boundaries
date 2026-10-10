@@ -1,9 +1,38 @@
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {filterItems,countryMatches,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,csv,searchable} from '../dist/catalogue-core.mjs';
+import {filterItems,countryMatches,coverageRows,coverageCell,partitionCoverageRows,boundaryVariants,csv,searchable,downloadStatus,deliveryMatches,dateLabel,attachAttributes} from '../dist/catalogue-core.mjs';
 const data=JSON.parse(readFileSync(new URL('../dist/catalogue.json',import.meta.url),'utf8'));
 const find=f=>filterItems(data.items,f,data.levels,data.providers);
+test('download filter includes publisher exports without treating every service as a file',()=>{
+  const direct={downloads:[{url:'https://example.org/file.zip'}],service:''};
+  const publisher={downloads:[],service:'https://example.org/FeatureServer',downloadAvailability:{status:'publisher'}};
+  const unknown={downloads:[],service:'https://example.org/FeatureServer'};
+  const disabled={...unknown,downloadAvailability:{status:'not-offered'}};
+  assert.equal(downloadStatus(unknown),'unknown');
+  for(const x of [direct,publisher])assert.ok(deliveryMatches(x,'downloadable'));
+  for(const x of [unknown,disabled])assert.equal(deliveryMatches(x,'downloadable'),false);
+  assert.equal(deliveryMatches(publisher,'file'),false);assert.ok(deliveryMatches(publisher,'publisher'));
+  assert.ok(deliveryMatches(unknown,'service'));assert.ok(deliveryMatches(unknown,'unknown'));
+  const real=find({delivery:'publisher',country:'England',level:'combined',year:'2025',kind:'boundary'});
+  assert.ok(real.some(x=>x.id==='ons:46d178d0a81241a0ae8637b9eddf2378'));
+});
+test('dates retain unknown values, UTC timestamps and unspecified publisher time zones',()=>{
+  assert.equal(dateLabel(null),'Not supplied');
+  assert.equal(dateLabel('2026-04-29T08:24:10.000Z',true),'29 Apr 2026 08:24:10 UTC');
+  assert.equal(dateLabel('2026-04-24T15:35:20',true),'2026-04-24 15:35:20 (time zone not supplied)');
+  assert.equal(dateLabel('2026-03-10T00:00:00'),'10 Mar 2026');
+});
+test('exports include full schemas and provenance and reject mismatched metadata',()=>{
+  const cache=JSON.parse(readFileSync(new URL('../dist/dataset-metadata.json',import.meta.url),'utf8'));
+  const row=data.items.find(x=>x.id==='ons:46d178d0a81241a0ae8637b9eddf2378');
+  const output=attachAttributes(row,cache);assert.equal(output.attributeSchema[0].fields.find(f=>f.name==='CAUTH25CD').length,9);
+  assert.equal(output.attributeSchema[0].id,1);assert.deepEqual(output.dates,row.dates);
+  assert.deepEqual(JSON.parse(JSON.stringify(output)).attributeSchema,output.attributeSchema);
+  const text=csv([{schema:JSON.stringify(output.attributeSchema)}],['schema']);assert.ok(text.includes('CAUTH25CD'));assert.ok(!text.includes('[object Object]'));
+  assert.throws(()=>attachAttributes({...row,service:'https://wrong.example/FeatureServer'},cache),/does not match/);
+  assert.throws(()=>attachAttributes({...row,attributes:{...row.attributes,checked:'2000-01-01'}},cache),/does not match/);
+});
 test('detail options include every indexed boundary code and preserve unfamiliar codes',()=>{
   const actual=new Set(boundaryVariants(data.items).map(x=>x.value));
   assert.deepEqual(actual,new Set(data.items.filter(x=>x.kind==='boundary').map(x=>x.variant)));

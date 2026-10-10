@@ -1,6 +1,30 @@
 // Pure catalogue queries shared by the browser and regression checks.
 export const CORE_GROUPS = ['Census','Administration','Regions & countries'];
 export const WEIGHTS = {population:'Population weighted',employment:'Employment / workplace weighted',address:'Address weighted',geometric:'Geometric', 'not-specified':'Not specified'};
+export const DOWNLOAD_STATUS = {direct:'Downloadable · direct file',publisher:'Downloadable · publisher', 'not-offered':'Downloads not offered',unknown:'Download not confirmed'};
+export function downloadStatus(item) { return item.downloads?.length ? 'direct' : item.downloadAvailability?.status || 'unknown'; }
+export function deliveryMatches(item, delivery) {
+  const status=downloadStatus(item);
+  return !delivery || (delivery==='downloadable' ? ['direct','publisher'].includes(status) :
+    delivery==='file' ? status==='direct' : delivery==='publisher' ? status==='publisher' :
+    delivery==='service' ? !!item.service : delivery==='unknown' ? status==='unknown' :
+    delivery==='source' ? !item.downloads.length&&!item.service : false);
+}
+export function dateLabel(value, full=false) {
+  if(!value)return 'Not supplied';
+  if(!/^\d{4}-\d{2}-\d{2}(T.*)?$/.test(value))return value;
+  if(value.includes('T')&&!/(Z|[+-]\d{2}:\d{2})$/.test(value))
+    return full ? value.replace('T',' ')+' (time zone not supplied)' : dateLabel(value.slice(0,10));
+  const date=new Date(value.length===10?value+'T12:00:00Z':value);
+  if(Number.isNaN(date.getTime()))return value;
+  const label=date.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+  return full&&value.includes('T') ? label+' '+date.toLocaleTimeString('en-GB',{timeZone:'UTC',hour12:false})+' UTC' : label;
+}
+export function attachAttributes(item, metadata) {
+  const entry=metadata.records?.[item.attributes?.key];
+  if(!entry||entry.service!==item.service||entry.checked!==item.attributes.checked)throw Error('Attribute metadata does not match this catalogue. Reload and try again.');
+  return {...item,attributeSchema:entry.layers,attributeMetadataErrors:entry.errors||[],attributeLastAttempt:entry.lastAttempt||null};
+}
 export const BOUNDARY_DETAILS = {
   BFC:'BFC · Full resolution, coastline clipped', BFE:'BFE · Full resolution, extent of realm',
   BGC:'BGC · Generalised (20m), coastline clipped', BSC:'BSC · Super generalised (200m), coastline clipped',
@@ -51,7 +75,7 @@ export function filterItems(items, f, levels, providers) {
     && (!f.variant || (x.kind==='boundary'&&x.variant===f.variant))
     && (!f.provider || x.provider===f.provider)
     && (!f.format || x.formats.includes(f.format))
-    && (!f.delivery || (f.delivery==='file' ? x.downloads.length>0 : f.delivery==='service' ? !!x.service : !x.downloads.length&&!x.service))
+    && deliveryMatches(x,f.delivery)
     && (!f.method || (f.method==='weighted' ? /population|area.*match|weighted/i.test(x.method) : x.method===f.method))
     && (!namedAreas.length || !x.areas || namedAreas.every(name=>x.areas.some(a=>normal(a.name)===name)))
     && queryMatches(x.searchText ?? searchable(x,levels,providers),f.query||''));
