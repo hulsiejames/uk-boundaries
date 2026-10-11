@@ -1,0 +1,45 @@
+# Code-quality conventions adapted from caf.toolkit and cookiecutter-caf.
+# This repository runs maintenance scripts; it is not a distributable library.
+[tool.ruff]
+line-length = 95
+target-version = "py310"
+extend-exclude = ["work", ".venv"]
+
+[tool.ruff.lint]
+select = ["A", "E", "W", "F", "UP", "B", "I", "N", "D", "ANN", "RUF", "PGH"]
+
+[tool.ruff.lint.per-file-ignores]
+# unittest hooks have prescribed names; test names describe the scenarios.
+"tests/*.py" = ["D", "ANN", "N802"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.10"
+files = ["catalogue_config.py", "metadata_types.py", "dataset_metadata.py", "ingest.py", "refresh.py"]
+strict = true
+show_error_codes = true
+pretty = true
+
+[tool.pylint.main]
+py-version = "3.10"
+
+[tool.pylint.design]
+max-args = 10
+max-positional-arguments = 7
+max-statements = 100
+max-locals = 25
+max-branches = 15
+max-returns = 8
+max-bool-expr = 6
+
+[tool.pylint.messages_control]
+# Ruff owns formatting/import order; dict() mirrors the publisher's JSON keys.
+disable = ["line-too-long", "wrong-import-order", "ungrouped-imports", "use-dict-literal"]
+
+[tool.pylint.reports]
+score = false

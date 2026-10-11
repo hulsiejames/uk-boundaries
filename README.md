@@ -8,7 +8,7 @@ The original map-comparison prototype is preserved on `main` in the initial impo
 
 ## Run locally
 
-Python 3.10+ and Node 22+ are sufficient; there are no third-party dependencies.
+Python 3.10+ and Node 22+ are sufficient at runtime; the maintenance scripts use the standard library. Formatting, lint and type checks use separate development tools.
 
 ```sh
 python -m http.server 8765 --directory dist
@@ -21,6 +21,39 @@ python -m unittest discover -s tests
 node --test tests/catalogue.test.mjs
 node --check dist/app.js
 ```
+
+## Python development
+
+The Python conventions follow [caf.toolkit](https://github.com/Transport-for-the-North/caf.toolkit/blob/main/pyproject.toml) and [cookiecutter-caf](https://github.com/Transport-for-the-North/cookiecutter-caf): Ruff formatting at 95 columns, NumPy-style production docstrings, explicit function annotations, strict mypy checks and Pylint. `pyproject.toml` is the shared configuration; `requirements_dev.txt` pins the direct development tools.
+
+Create and activate a virtual environment, then install the tools:
+
+```sh
+python -m venv .venv
+# PowerShell: .\.venv\Scripts\Activate.ps1
+# bash: source .venv/bin/activate
+python -m pip install -r requirements_dev.txt
+```
+
+Run these checks from the repository root:
+
+```sh
+python -m ruff format .
+python -m ruff check .
+python -m mypy
+python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py
+python -m unittest discover -s tests
+node --test tests/catalogue.test.mjs
+node --check dist/app.js
+```
+
+CI uses `ruff format --check .`, checks types and lint, and runs Python tests on **3.10 and 3.12**. Website deployment requires both Python quality and the existing regression checks to pass. The refresh workflow runs quality checks before contacting publishers, then validates the refreshed candidate with the existing Python/Node tests.
+
+Ruff checks all Python source and tests; mypy and Pylint check all five production modules. Test method names describe their scenarios, so Ruff's docstring/annotation requirements are scoped to production code and unittest's prescribed hook names are allowed. Publisher JSON and audited override values remain extensible through `JsonObject`; HTTP request/response contracts and function signatures are typed. Narrow Pylint exceptions retain error reporting at publisher boundaries. Complexity limits allow the existing discovery/capture phases without changing their classification rules.
+
+The CAF template is a scaffold for new distributable packages. This project currently supplies a static site and repository maintenance scripts whose inputs and outputs live beside the code. This refactor adopts the template's tooling conventions while retaining `python ingest.py` and `python refresh.py`, their arguments, repository-relative data paths and generated JSON contracts. A future installable spatial-library API would need explicit data-location and distribution design before a `src/` package migration. No CAF namespace, organisation attribution, release machinery or PyPI publication is introduced.
+
+Regression tests exercise the ingestion and refresh entry points offline, including report-only runs, applying a validated candidate and preserving published files after rejection. The style refactor was also compared with the preceding implementation using all 3,077 records and 844 cached link outcomes at a fixed clock; generated records, health flags, report text and serialized catalogue/schema bytes matched. The website assets and published snapshots are unchanged by the refactor.
 
 ## Coverage
 
