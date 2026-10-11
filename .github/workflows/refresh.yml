@@ -36,6 +36,14 @@ jobs:
         with:
           node-version: '22'
           package-manager-cache: false
+      - name: Install development tools
+        run: python -m pip install -r requirements_dev.txt
+      - name: Check Python formatting, lint and types
+        run: |
+          python -m ruff format --check .
+          python -m ruff check .
+          python -m mypy
+          python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py
       - name: Refresh listings, schemas and links
         run: python refresh.py --apply --output-dir "${{ runner.temp }}/catalogue-refresh"
       - name: Validate the candidate

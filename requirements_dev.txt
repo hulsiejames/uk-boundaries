@@ -1,0 +1,4 @@
+# Pinned direct tools keep local checks and GitHub Actions consistent.
+ruff==0.17.0
+mypy==2.4.0
+pylint==4.1.3
