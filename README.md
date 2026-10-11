@@ -24,7 +24,7 @@ node --check dist/app.js
 
 ## Coverage
 
-The checked 6 October 2026 snapshot contains **3,077 source records**, from a scan of **3,291 ONS items** plus **106 curated source records**, organised into **63 reporting levels** and nine publisher routes. Counts describe source items and file variants, not geographic areas or independent boundary changes.
+The checked 10 October 2026 snapshot contains **3,077 source records**, from a scan of **3,291 ONS items** plus **106 curated source records**, organised into **63 reporting levels** and nine publisher routes. Counts describe source items and file variants, not geographic areas or independent boundary changes.
 
 - England and Wales: OA, LSOA and MSOA reference vintages 2001, 2011 and 2021.
 - Scotland: OA, Data Zones and Intermediate Zones for 2001, 2011 and 2022; centroids, census linkage and higher-area lookups.
@@ -61,9 +61,26 @@ Every result has a **download availability tag**. Direct file links and publishe
 
 **Attributes** opens a schema panel where captured: field names, aliases, types, lengths, nullability, layer name, geometry type, CRS and publisher record count. These are publisher **layer** schemas; a downloaded format may omit or truncate fields. `dist/dataset-metadata.json` contains this metadata, loads only when opening attributes or exporting, and contains no feature records or polygons. CSV and JSON exports include the full schemas, availability and date provenance. A failed schema fetch offers a retry instead of silently omitting fields from an export.
 
-The enrichment snapshot captured **2,275 layers across 2,274 source records** on **9 October 2026 (UTC)**, including every indexed ONS feature service. There are **775 direct-download records**, **2,273 publisher-download records**, and **29 records with unconfirmed download availability**. Unconfirmed includes source directories, legislation and services for which publisher downloads were not exposed. Direct CSV/Excel/ZIP files and non-ArcGIS/WFS sources do not automatically have captured schemas. Five OSNI services denied anonymous metadata access; their existing discovery routes remain visible. The ONS inventory itself remains the 6 October scan.
+The enrichment snapshot captured **2,275 layers across 2,274 source records**, rechecked on **10 October 2026 (UTC)**, including every indexed ONS feature service. There are **775 direct-download records**, **2,273 publisher-download records**, and **29 records with unconfirmed download availability**. Unconfirmed includes source directories, legislation and services for which publisher downloads were not exposed. Direct CSV/Excel/ZIP files and non-ArcGIS/WFS sources do not automatically have captured schemas. Five OSNI services denied anonymous metadata access; their existing discovery routes remain visible. The ONS inventory was rescanned on 10 October.
 
 ## Refresh and audit
+
+The website is a generated snapshot. Static hosting does not stop automatic updates: GitHub Actions can fetch current publisher metadata, check links, run tests and prepare a new version without a web server or database.
+
+The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. Leave `open_pr` enabled to open/update the single `automated/catalogue-refresh` PR; turn it off for a report-only run. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, then runs the regression tests. It saves a candidate/report artifact and a run summary. The published site changes after the update PR is reviewed and merged.
+
+Automatic PR creation requires **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests**. The workflow does not approve or merge PRs. It uses only the repository's built-in token; no personal token is needed. GitHub may require you to approve CI runs for PRs created using that token; the refresh workflow already runs all tests before opening the PR. In public repositories, GitHub can disable schedules after 60 days without repository activity. Check the workflow state if refreshes stop; the site also warns when its published snapshot is more than 14 days old.
+
+The same operation is available locally:
+
+```sh
+python refresh.py                           # candidate + report in work/refresh; dist untouched
+python refresh.py --apply                   # stage a validated candidate in dist; no commit/deploy
+```
+
+The checker uses HEAD requests, with a bounded range GET fallback; it never saves GIS file contents. It distinguishes missing (404/410), restricted (401/403), and inconclusive checks (timeouts, rate limiting or server failures). HTTP 200 does not certify usable data or licence rights, and SPA landing-page responses do not prove a dataset exists. ONS existence is checked against the current publisher item search. Redirect destinations are reported, with temporary query tokens removed, rather than silently replacing historical URLs.
+
+Historical ONS records absent from a fresh scan are retained and flagged. Widespread new disappearance or metadata failures reject the candidate, preserving the published version. The published `dist/refresh-status.json` contains per-link results and the change report; result cards flag issues, and the Delivery filter includes **Links needing attention**. Downloads known missing are excluded from “Downloadable”; restricted/inconclusive files remain unconfirmed. Curated non-ONS sources still need occasional human rediscovery when a publisher changes its catalogue structure, and audited authority-name/centroid-methodology overrides are not automatically recertified.
 
 ```sh
 python ingest.py
@@ -81,6 +98,8 @@ The curated registry is deliberately manual: its records were explored and check
 `catalogue_config.py` owns the taxonomy, aliases and publisher routes. `ingest.py` owns normalisation. `dist/catalogue-core.mjs` owns filtering, country matching, coverage cells and CSV escaping, shared by the browser and regression checks.
 
 `metadata_overrides.json` retains the manually audited authority-name snapshots, CCA code classification source and the workplace-centroid methodology override. Refreshing the ONS catalogue does not refresh these audits: recheck the matching source vintage before adding or changing an override. CSV/JSON exports retain centroid weighting, weighting basis/year, algorithm/methodology and audited area names alongside the existing source metadata.
+
+The first automated checking candidate was run on 10 October 2026. Its ONS discovery found no additions, removals or changed listing URLs relative to the 6 October inventory. All 844 distinct page/download links responded successfully. Of 2,279 ArcGIS service captures, five OSNI services denied anonymous access and GLA's Hub metadata was absent (its service schema and direct file link remain available). See `dist/refresh-status.json` for the actual link results and updated schema comparison; link availability and boundary vintage are separate facts.
 
 See [docs/source-audit.md](docs/source-audit.md) for the explored sources, date semantics and remaining gaps.
 
