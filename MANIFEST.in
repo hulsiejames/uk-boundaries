@@ -1,0 +1,2 @@
+prune tests
+include tests/test_api.py
