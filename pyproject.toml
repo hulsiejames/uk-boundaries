@@ -11,6 +11,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.optional-dependencies]
+examples = ["geopandas>=1.1,<2", "pyogrio>=0.11,<1"]
+
 [project.urls]
 Homepage = "https://hulsiejames.github.io/uk-boundaries/"
 Repository = "https://github.com/hulsiejames/uk-boundaries"
@@ -45,6 +48,11 @@ files = ["catalogue_config.py", "metadata_types.py", "dataset_metadata.py", "ing
 strict = true
 show_error_codes = true
 pretty = true
+
+[[tool.mypy.overrides]]
+module = ["geopandas", "geopandas.*"]
+# GeoPandas does not ship typing metadata; the optional example remains annotated.
+ignore_missing_imports = true
 
 [tool.pylint.main]
 py-version = "3.10"
