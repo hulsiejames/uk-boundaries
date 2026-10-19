@@ -10,50 +10,93 @@ The original map-comparison prototype is preserved on `main` in the initial impo
 
 Python 3.10+ and Node 22+ are sufficient at runtime; the maintenance scripts use the standard library. Formatting, lint and type checks use separate development tools.
 
-```sh
+```bat
 python -m http.server 8765 --directory dist
 ```
 
-Open `http://localhost:8765`. Serve the files over HTTP rather than opening `index.html` directly.
+Open `http://localhost:8765`. Serve the files over HTTP rather than opening `index.html` directly. For the test commands below, first use the Conda development setup and install the Python package.
 
-```sh
+```bat
 python -m unittest discover -s tests
 node --test tests/catalogue.test.mjs
 node --check dist/app.js
 ```
+
+## Python API
+
+The installable distribution is `uk-boundary-atlas`; import it as `uk_boundaries`. It uses the Python standard library, loads a local snapshot or the published catalogue, and downloads native publisher files into a chosen directory. The package contains code only: the website data and government polygons are not bundled in its wheel.
+
+Install in an isolated Conda environment (Windows `cmd.exe`):
+
+```bat
+conda create --name uk-boundaries-client --channel conda-forge python=3.12 pip
+conda activate uk-boundaries-client
+python -m pip install git+https://github.com/hulsiejames/uk-boundaries.git
+```
+
+Or activate your own target Conda environment and install a checkout using `python -m pip install .`. Installation from GitHub requires Git.
+
+```python
+from uk_boundaries import Catalogue
+
+catalogue = Catalogue.from_url()
+# Offline alternatives: the shipped dist/catalogue.json or a website manifest export.
+# catalogue = Catalogue.from_file("uk-boundary-manifest.json")
+
+matches = catalogue.search(level="combined", country="England", year=2025, variant="BFC")
+for dataset in matches:
+    print(dataset.id, dataset.title)
+
+# Select an exact record; never silently choose a different vintage or resolution.
+record_id = "ons:46d178d0a81241a0ae8637b9eddf2378"
+options = catalogue.resolve(record_id)
+for option in options:
+    print(option.format, option.url, option.layer_id)
+
+result = catalogue.download(record_id, output_dir=r"C:\spatial\boundaries")
+print(result.format)  # Actual saved format: gpkg or shapefile.
+print(result.path)  # A path usable by GeoPandas, GDAL or another process.
+print(result.manifest_path)  # Record ID, source, reference years, hash and download time.
+```
+
+`Catalogue.from_url()` retrieves the latest **published static snapshot**, not a live government catalogue scan. `from_file()` and `search()` work offline. Search uses reporting IDs from `catalogue.levels`, labelled reference years, country containment, whole-word text, product kind and boundary variant. It defaults to `kind="boundary"`; use `kind="centroid"`, `kind="lookup"` or `kind=None` as needed. Individual polygon/place names remain outside the index, except audited combined-authority names/codes.
+
+`resolve()` returns indexed direct GeoPackage/shapefile links and live ArcGIS Hub export routes. It checks the actual service layer IDs and the publisher's download flag; a service's export capability alone is insufficient. Multiple service layers require an explicit `layer_id`. Direct bundles are downloaded whole; `layer_id` applies to service exports. All spatial primary files in a bundle are returned in `result.paths`; `result.path` raises `AmbiguousLayerError` when several exist.
+
+`download()` tries GeoPackage first and falls back to shapefile when the preferred public download fails or is unavailable. Set `format_preference=("gpkg",)` to require GeoPackage or `("shapefile",)` to request shapefile only. Files retain their publisher geometry, CRS and fields; the API performs no conversions, clipping or translations. Native GeoPackages and ZIPs are supported; shapefile archives must contain the `.shp`, `.shx` and `.dbf` sidecars. [Esri's download settings](https://doc.esri.com/en/arcgis-hub/latest/build/data-download-settings.html) explain why formats and anonymous availability vary by service.
+
+Downloads are streamed into a staging directory, checked and then moved into a separate record/format directory. Existing results are preserved unless `overwrite=True`; even then, validation completes before replacement. Unsafe archive paths, symlinks, duplicate paths, incomplete transfers and unexpected file contents are rejected. `max_bytes` defaults to 2 GB for both the transfer and total uncompressed contents; raise it explicitly for large national datasets. `timeout` controls each request and `max_wait` bounds export preparation/polling. A provenance manifest records the actual format, selected layer, public URLs and SHA-256 payload hash; temporary redirect tokens are omitted.
+
+The API supports public direct-file routes and public ArcGIS Hub exports. Page-only, restricted, WFS-only or unsupported sources raise `DownloadUnavailableError` with the source route rather than inventing a file. Other errors derive from `BoundaryError`; an existing output raises `FileExistsError`. A current successful download does not make its geography vintage a legal effective date. Retain the publisher's licence and attribution with downstream use.
 
 ## Python development
 
-The Python conventions follow [caf.toolkit](https://github.com/Transport-for-the-North/caf.toolkit/blob/main/pyproject.toml) and [cookiecutter-caf](https://github.com/Transport-for-the-North/cookiecutter-caf): Ruff formatting at 95 columns, NumPy-style production docstrings, explicit function annotations, strict mypy checks and Pylint. `pyproject.toml` is the shared configuration; `requirements_dev.txt` pins the direct development tools.
+The Python conventions follow [caf.toolkit](https://github.com/Transport-for-the-North/caf.toolkit/blob/main/pyproject.toml) and [cookiecutter-caf](https://github.com/Transport-for-the-North/cookiecutter-caf): Ruff at 95 columns, NumPy-style production docstrings, explicit function annotations, strict mypy and Pylint. The `src/uk_boundaries` package has independent data-location semantics: local snapshots are explicit paths and the default remote source is the published catalogue. The existing `ingest.py` and `refresh.py` maintenance commands retain their repository-relative inputs/outputs.
 
-Create and activate a virtual environment, then install the tools:
+Create the project-local Conda environment, install Conda dependencies first, then install the package with pip inside it:
 
-```sh
-python -m venv .venv
-# PowerShell: .\.venv\Scripts\Activate.ps1
-# bash: source .venv/bin/activate
-python -m pip install -r requirements_dev.txt
+```bat
+conda env create --prefix .\.conda --file environment.yml
+conda activate .\.conda
+python -m pip install --no-build-isolation --no-deps -e .
 ```
 
-Run these checks from the repository root:
+`environment.yml` provides Python and the development tools from conda-forge. Its Ruff package provides the `ruff` executable. `requirements_dev.txt` supplies the matching tool versions for the isolated GitHub runners. Run checks from the repository root:
 
-```sh
-python -m ruff format .
-python -m ruff check .
+```bat
+ruff format .
+ruff check .
 python -m mypy
-python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py
+python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py src/uk_boundaries
 python -m unittest discover -s tests
 node --test tests/catalogue.test.mjs
 node --check dist/app.js
+python -m build --no-isolation --outdir work\package-dist
 ```
 
-CI uses `ruff format --check .`, checks types and lint, and runs Python tests on **3.10 and 3.12**. Website deployment requires both Python quality and the existing regression checks to pass. The refresh workflow runs quality checks before contacting publishers, then validates the refreshed candidate with the existing Python/Node tests.
+Ruff checks Python source/tests; mypy and Pylint check the maintenance modules and API. Test scenario names and prescribed unittest hooks are exempt from production docstring/annotation naming rules. Publisher JSON values remain extensible while function and HTTP contracts are typed. CI installs the package as a wheel and checks Python **3.10 and 3.12**; website deployment requires quality and regression tests to pass. The refresh workflow checks code quality before contacting publishers, then tests the candidate.
 
-Ruff checks all Python source and tests; mypy and Pylint check all five production modules. Test method names describe their scenarios, so Ruff's docstring/annotation requirements are scoped to production code and unittest's prescribed hook names are allowed. Publisher JSON and audited override values remain extensible through `JsonObject`; HTTP request/response contracts and function signatures are typed. Narrow Pylint exceptions retain error reporting at publisher boundaries. Complexity limits allow the existing discovery/capture phases without changing their classification rules.
-
-The CAF template is a scaffold for new distributable packages. This project currently supplies a static site and repository maintenance scripts whose inputs and outputs live beside the code. This refactor adopts the template's tooling conventions while retaining `python ingest.py` and `python refresh.py`, their arguments, repository-relative data paths and generated JSON contracts. A future installable spatial-library API would need explicit data-location and distribution design before a `src/` package migration. No CAF namespace, organisation attribution, release machinery or PyPI publication is introduced.
-
-Regression tests exercise the ingestion and refresh entry points offline, including report-only runs, applying a validated candidate and preserving published files after rejection. The style refactor was also compared with the preceding implementation using all 3,077 records and 844 cached link outcomes at a fixed clock; generated records, health flags, report text and serialized catalogue/schema bytes matched. The website assets and published snapshots are unchanged by the refactor.
+The API's offline regression tests cover selection, actual nonzero layer IDs, public download flags, native GeoPackage/shapefile output, format fallback, queued responses, safe extraction and preservation of existing outputs. The maintenance CLI tests cover report-only runs, applying a validated candidate and preserving published files after rejection. The earlier style refactor compared all 3,077 records and 844 cached link outcomes at a fixed clock, including serialized catalogue/schema bytes. Website assets and published snapshots remain independent of the package.
 
 ## Coverage
 
@@ -100,25 +143,29 @@ The enrichment snapshot captured **2,275 layers across 2,274 source records**, r
 
 The website is a generated snapshot. Static hosting does not stop automatic updates: GitHub Actions can fetch current publisher metadata, check links, run tests and prepare a new version without a web server or database.
 
-The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. Leave `open_pr` enabled to open/update the single `automated/catalogue-refresh` PR; turn it off for a report-only run. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, then runs the regression tests. It saves a candidate/report artifact and a run summary. The published site changes after the update PR is reviewed and merged.
+The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, runs regression tests, and saves a **catalogue-refresh-report** artifact plus a run summary. It has read-only repository permissions and performs no repository commits or PR creation. The published site changes after a reviewed metadata commit reaches `main`.
 
-Automatic PR creation requires **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests**. The workflow does not approve or merge PRs. It uses only the repository's built-in token; no personal token is needed. GitHub may require you to approve CI runs for PRs created using that token; the refresh workflow already runs all tests before opening the PR. In public repositories, GitHub can disable schedules after 60 days without repository activity. Check the workflow state if refreshes stop; the site also warns when its published snapshot is more than 14 days old.
+On 19 October 2026, the scheduled run completed its refresh, validation and artifact upload, then failed because GitHub Actions could not create PRs. That restriction is respected: automatic PR creation and its write permissions have been removed. [That run's tested candidate remains available](https://github.com/hulsiejames/uk-boundaries/actions/runs/39234811027) until its artifact expires. No additional token or permission change is required for future checks.
+
+To apply a saved candidate manually, download and extract its artifact, inspect `summary.md` and confirm `refresh-status.json` has `status: "checked"` and no validation errors. Copy only `catalogue.json`, `dataset-metadata.json` and `refresh-status.json` into `dist/`, run the Python/Node checks, and review/commit those three files through the normal Git workflow. Rejected or failed captures can still have diagnostic artifacts; do not publish those candidates. The same refresh/review can be run from a local checkout. In public repositories, GitHub can disable schedules after 60 days of inactivity; the manual run route and 14-day published-snapshot warning remain available.
 
 The same operation is available locally:
 
-```sh
-python refresh.py                           # candidate + report in work/refresh; dist untouched
-python refresh.py --apply                   # stage a validated candidate in dist; no commit/deploy
+```bat
+REM Save a candidate and report; dist is untouched.
+python refresh.py
+REM Stage a validated candidate in dist, then review and commit it.
+python refresh.py --apply
 ```
 
 The checker uses HEAD requests, with a bounded range GET fallback; it never saves GIS file contents. It distinguishes missing (404/410), restricted (401/403), and inconclusive checks (timeouts, rate limiting or server failures). HTTP 200 does not certify usable data or licence rights, and SPA landing-page responses do not prove a dataset exists. ONS existence is checked against the current publisher item search. Redirect destinations are reported, with temporary query tokens removed, rather than silently replacing historical URLs.
 
 Historical ONS records absent from a fresh scan are retained and flagged. Widespread new disappearance or metadata failures reject the candidate, preserving the published version. The published `dist/refresh-status.json` contains per-link results and the change report; result cards flag issues, and the Delivery filter includes **Links needing attention**. Downloads known missing are excluded from “Downloadable”; restricted/inconclusive files remain unconfirmed. Curated non-ONS sources still need occasional human rediscovery when a publisher changes its catalogue structure, and audited authority-name/centroid-methodology overrides are not automatically recertified.
 
-```sh
+```bat
 python ingest.py
 python ingest.py --verify-sources
-python ingest.py --ons-cache /path/to/ons-raw.json --ons-checked 2026-10-06
+python ingest.py --ons-cache C:\data\ons-raw.json --ons-checked 2026-10-06
 python ingest.py --refresh-metadata
 ```
 

@@ -385,8 +385,8 @@ def report_markdown(report: JsonObject) -> str:
         "checked for reachability, not automatically rediscovered. Redirects are "
         "reported without silently rewriting historical URLs. Inspect "
         "`dist/refresh-status.json` for per-link results.\n\n"
-        "Tests run in the refresh workflow before an update PR is opened. The PR must "
-        "be reviewed and merged before GitHub Pages updates.\n"
+        "The refresh workflow saves a tested candidate as an artifact. Review and "
+        "commit its three JSON files, then merge the changes to update GitHub Pages.\n"
     )
 
 

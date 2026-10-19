@@ -1,9 +1,30 @@
 # Code-quality conventions adapted from caf.toolkit and cookiecutter-caf.
-# This repository runs maintenance scripts; it is not a distributable library.
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uk-boundary-atlas"
+version = "0.1.0"
+description = "Find UK geography datasets and download publisher GeoPackages or shapefiles."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Homepage = "https://hulsiejames.github.io/uk-boundaries/"
+Repository = "https://github.com/hulsiejames/uk-boundaries"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+uk_boundaries = ["py.typed"]
+
 [tool.ruff]
 line-length = 95
 target-version = "py310"
-extend-exclude = ["work", ".venv"]
+extend-exclude = ["work", ".venv", ".conda", "build"]
 
 [tool.ruff.lint]
 select = ["A", "E", "W", "F", "UP", "B", "I", "N", "D", "ANN", "RUF", "PGH"]
@@ -20,7 +41,7 @@ docstring-code-format = true
 
 [tool.mypy]
 python_version = "3.10"
-files = ["catalogue_config.py", "metadata_types.py", "dataset_metadata.py", "ingest.py", "refresh.py"]
+files = ["catalogue_config.py", "metadata_types.py", "dataset_metadata.py", "ingest.py", "refresh.py", "src/uk_boundaries"]
 strict = true
 show_error_codes = true
 pretty = true
@@ -33,6 +54,7 @@ max-args = 10
 max-positional-arguments = 7
 max-statements = 100
 max-locals = 25
+max-attributes = 15
 max-branches = 15
 max-returns = 8
 max-bool-expr = 6

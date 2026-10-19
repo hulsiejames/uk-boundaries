@@ -4,3 +4,7 @@ work/
 .venv/
 .mypy_cache/
 .ruff_cache/
+.conda/
+build/
+*.egg-info/
+downloads/

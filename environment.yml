@@ -1,0 +1,12 @@
+name: uk-boundaries
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools>=68
+  - python-build
+  - ruff=0.17.0
+  - mypy=2.4.0
+  - pylint=4.1.3
