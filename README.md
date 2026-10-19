@@ -69,6 +69,11 @@ Downloads are streamed into a staging directory, checked and then moved into a s
 
 The API supports public direct-file routes and public ArcGIS Hub exports. Page-only, restricted, WFS-only or unsupported sources raise `DownloadUnavailableError` with the source route rather than inventing a file. Other errors derive from `BoundaryError`; an existing output raises `FileExistsError`. A current successful download does not make its geography vintage a legal effective date. Retain the publisher's licence and attribution with downstream use.
 
+An end-to-end [Greater Manchester example](examples/README.md) searches for and
+downloads 2021 OA population-weighted centroids and the 2021 combined-authority
+boundary, then writes a GeoPackage containing the centroids within that boundary.
+It uses optional GeoPandas dependencies in a separate Conda environment.
+
 ## Python development
 
 The Python conventions follow [caf.toolkit](https://github.com/Transport-for-the-North/caf.toolkit/blob/main/pyproject.toml) and [cookiecutter-caf](https://github.com/Transport-for-the-North/cookiecutter-caf): Ruff at 95 columns, NumPy-style production docstrings, explicit function annotations, strict mypy and Pylint. The `src/uk_boundaries` package has independent data-location semantics: local snapshots are explicit paths and the default remote source is the published catalogue. The existing `ingest.py` and `refresh.py` maintenance commands retain their repository-relative inputs/outputs.
@@ -141,7 +146,10 @@ The enrichment snapshot captured **2,275 layers across 2,274 source records**, r
 
 ## Refresh and audit
 
-The website is a generated snapshot. Static hosting does not stop automatic updates: GitHub Actions can fetch current publisher metadata, check links, run tests and prepare a new version without a web server or database.
+**The live catalogue does not automatically update each week.** Weekly automation
+checks sources and prepares a tested candidate; publishing requires a reviewed
+metadata commit to `main`. Static hosting supports automatic deployment of that
+commit, but the refresh workflow does not commit its candidate.
 
 The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, runs regression tests, and saves a **catalogue-refresh-report** artifact plus a run summary. It has read-only repository permissions and performs no repository commits or PR creation. The published site changes after a reviewed metadata commit reaches `main`.
 

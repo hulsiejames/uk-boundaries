@@ -1,0 +1,10 @@
+name: uk-boundaries-example
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools>=68
+  - geopandas>=1.1,<2
+  - pyogrio>=0.11,<1
