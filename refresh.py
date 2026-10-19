@@ -366,7 +366,7 @@ def schema_changes(before: JsonObject, after: JsonObject) -> list[str]:
 
 
 def report_markdown(report: JsonObject) -> str:
-    """Summarise a check for the Actions run and its review PR."""
+    """Summarise a check for the Actions run and manual catalogue review."""
     s = report["summary"]
     return (
         f"Refresh checked {report['finished']}.\n\n"

@@ -38,7 +38,7 @@ jobs:
           ruff format --check .
           ruff check .
           python -m mypy
-          python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py src/uk_boundaries
+          python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py refresh_notify.py src/uk_boundaries
       - name: Test Python compatibility
         run: python -m unittest discover -s tests
 

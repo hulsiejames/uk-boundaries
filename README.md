@@ -92,7 +92,7 @@ python -m pip install --no-build-isolation --no-deps -e .
 ruff format .
 ruff check .
 python -m mypy
-python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py src/uk_boundaries
+python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py refresh_notify.py src/uk_boundaries
 python -m unittest discover -s tests
 node --test tests/catalogue.test.mjs
 node --check dist/app.js
@@ -151,9 +151,26 @@ checks sources and prepares a tested candidate; publishing requires a reviewed
 metadata commit to `main`. Static hosting supports automatic deployment of that
 commit, but the refresh workflow does not commit its candidate.
 
-The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, runs regression tests, and saves a **catalogue-refresh-report** artifact plus a run summary. It has read-only repository permissions and performs no repository commits or PR creation. The published site changes after a reviewed metadata commit reaches `main`.
+The **Check and refresh catalogue** workflow runs weekly (Monday, 04:23 UTC), and can also be started from **Actions → Check and refresh catalogue → Run workflow**. It refreshes ONS discovery and ArcGIS schemas, checks curated landing pages/WFS routes and direct file links, runs regression tests, and saves a **catalogue-refresh-report** artifact plus a run summary. It then **opens a GitHub issue mentioning `@hulsiejames`**, with the candidate's download link, change counts and publishing instructions. The published site changes after a reviewed metadata commit reaches `main`.
 
-On 19 October 2026, the scheduled run completed its refresh, validation and artifact upload, then failed because GitHub Actions could not create PRs. That restriction is respected: automatic PR creation and its write permissions have been removed. [That run's tested candidate remains available](https://github.com/hulsiejames/uk-boundaries/actions/runs/39234811027) until its artifact expires. No additional token or permission change is required for future checks.
+The notification runs in a separate job even when the refresh fails. Only a
+successful refresh, passing candidate tests, a checked report with no validation
+errors and a saved artifact produce a “ready for review” notice. Failures produce
+an issue linking to diagnostic logs instead. There is one issue per scheduled or
+manual workflow run; reruns update the same issue, including closed issues, without
+reopening it. The bot does not close issues automatically: close a ready notice
+after publishing and checking the update.
+
+The refresh job remains read-only. Only the notification job receives
+`issues: write`; neither job receives repository-write or PR permissions.
+It uses the built-in `GITHUB_TOKEN`, so no personal token or PR-creation setting
+is needed. [GitHub documents issue creation with this token](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token).
+GitHub delivers mention notifications according to your account's notification
+settings. Issue contents explicitly distinguish a prepared candidate from a
+published update. Artifacts expire after 30 days; rerun the workflow for a fresh
+candidate if the linked artifact has expired.
+
+On 19 October 2026, the scheduled run completed its refresh, validation and artifact upload, then failed because GitHub Actions could not create PRs. Automatic PR creation has been removed and issue notifications replace it. [Issue #10](https://github.com/hulsiejames/uk-boundaries/issues/10) mentions the maintainer and links to that run's tested candidate, which expires on 18 November 2026. No personal token or repository setting change is required for future notifications.
 
 To apply a saved candidate manually, download and extract its artifact, inspect `summary.md` and confirm `refresh-status.json` has `status: "checked"` and no validation errors. Copy only `catalogue.json`, `dataset-metadata.json` and `refresh-status.json` into `dist/`, run the Python/Node checks, and review/commit those three files through the normal Git workflow. Rejected or failed captures can still have diagnostic artifacts; do not publish those candidates. The same refresh/review can be run from a local checkout. In public repositories, GitHub can disable schedules after 60 days of inactivity; the manual run route and 14-day published-snapshot warning remain available.
 
