@@ -17,6 +17,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    outputs:
+      report: ${{ steps.report.outputs.report }}
+      artifact-id: ${{ steps.artifact.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -37,7 +40,7 @@ jobs:
           ruff format --check .
           ruff check .
           python -m mypy
-          python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py src/uk_boundaries
+          python -m pylint catalogue_config.py metadata_types.py dataset_metadata.py ingest.py refresh.py refresh_notify.py src/uk_boundaries
       - name: Refresh listings, schemas and links
         run: python refresh.py --apply --output-dir "${{ runner.temp }}/catalogue-refresh"
       - name: Validate the candidate
@@ -56,6 +59,7 @@ jobs:
             echo 'Refresh failed before a candidate was produced. The published snapshot was preserved; inspect the logs.' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Save the candidate and report
+        id: artifact
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
@@ -63,3 +67,29 @@ jobs:
           path: ${{ runner.temp }}/catalogue-refresh/
           if-no-files-found: warn
           retention-days: 30
+      - name: Prepare compact notification report
+        id: report
+        if: always()
+        run: python refresh_notify.py --prepare "${{ runner.temp }}/catalogue-refresh/refresh-status.json"
+
+  notify:
+    name: Notify catalogue maintainer
+    needs: refresh
+    if: always() && github.repository == 'hulsiejames/uk-boundaries' && github.ref == 'refs/heads/main' && needs.refresh.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Open or update this run's issue and mention hulsiejames
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REFRESH_RESULT: ${{ needs.refresh.result }}
+          REFRESH_REPORT: ${{ needs.refresh.outputs.report }}
+          REFRESH_ARTIFACT_ID: ${{ needs.refresh.outputs.artifact-id }}
+        run: python refresh_notify.py
